@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="stylesheet/styles.css">
+	<title>HMS Ark Royal</title>
+<style>
+.topnav a.active {
+background-color: #a3a109;
+color: white;
+}
+.topnav a.active:hover{
+  box-shadow: 0 0 6px 6px #a3a109;
+  transition: 0.15s;
+}
+.arkDiv{
+	padding-top: 10px;
+	position: relative;
+  width: 20vw;
+}
+</style>
+</head>
+<body>
+	<!--Navbar-->
+  <div class="topnav" id = "navBar">
+    <a href="../index.html"class="bagel" id="home">Home</a>
+    <div class="dropdown">
+        <button class="dropbtn" id="bagel">United States Navy</button>
+        <div class="dropdown-content">
+          <a href="washington.html" class="bagel">Washington</a>
+          <a href="enterprise.html" class="bagel">Enterprise</a>
+          <a href="san_francisco.html" class="bagel">San Francisco</a>
+        </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn" id="tostido">British Royal Navy</button>
+      <div class="dropdown-content">
+          <a href="belfast.html" class="tostido">Belfast</a>
+          <a href="hood.html" class="tostido">Hood</a>
+          <a href="ark_royal.html" class="active"><b>Ark Royal</b></a>
+      </div>
+  </div>
+  <div class="dropdown">
+      <button class="dropbtn" id="potato">Imperial Japanese Navy</button>
+      <div class="dropdown-content">
+          <a href="yamato.html" class="potato">Yamato</a>
+          <a href="sho-zui.html"class="potato">Shōkaku and Zuikaku</a>
+          <a href="ayanami.html"class="potato">Ayanami</a>
+      </div>
+  </div>
+  <div class="dropdown">
+      <button class="dropbtn" id="sourpatch">German <i>Kriegsmarine</i></button>
+      <div class="dropdown-content">
+          <a href="bismarck.html"class="sourpatch">Bismarck</a>
+          <a href="u-47.html"class="sourpatch">U-47</a>
+          <a href="prinz_eugen.html"class="sourpatch">Prinz Eugen</a>
+      </div>
+  </div>
+  <a href="battleship game/battleship.html"class="sourpatch" id="battleship" style="float:right">Play Battleship</a>
+  </div>
+<!--introductory text-->
+<h2 style="margin-top: 12px">Buoyant Airbase: HMS <i>Ark Royal</i></h2>
+<p>
+  The HMS <i>Ark Royal</i> was an aircraft carrier designed in 1934 under the restrictions of both the Washington Naval Treaty and the Second London Naval Treaty, limiting her armaments and her <i class="qtip tip-top" data-tip="Refers to the weight of a ship, but is calculated indirectly by measuring the volume of water displaced by a ship and converting that value into weight.">displacement</i>. Circumstantially, she was the first aircraft carrier to ever have her hangars and flight deck built into her hull instead of add-ons that could be fitted or removed at a later date. She was designed to carry a great deal of aircraft and had two hangar deck levels to support this. <i>Ark Royal</i> featured both <i class="qtip tip-top" data-tip="A mechanical system designed to rapidly decelerate an aircraft as it lands.">arrestor gear</i> and <i class="qtip tip-top" data-tip="A device designed to propel aircraft, allowing them to take off with a very limited amount of space.">steam catapult</i> systems to shorten the time it takes for planes to land and take off, allowing her to more efficiently sortie air support. After years of construction, she was finally commissioned on 16 December, 1938, and deployed alongside the <i class="qtip tip-top" data-tip="The Home Fleet was a Royal Navy fleet tasked with operations taking part in Great Britain's territorial waters.">Home</i> and Mediterranean Fleets.
+</p>
+<br>
+<!--Image-->
+<div class="arkDiv" style=" margin-left: 5%; width: 95%">
+	<img src="images/Ark_Royal.jpg" id="arkImg" alt="HMS Ark Royal, shortly after launch" style="text-align: left" width="40%" height="auto">
+  <script src="http://cdn.amcharts.com/lib/4/core.js"></script>
+  <script src="http://cdn.amcharts.com/lib/4/charts.js"></script>
+  <div class="wrapper" style="text-align: right !important; width: 40%; float:right; margin-right: 8vw; padding: 0; max-height: fit-content;">
+  <div id="chartdiv"></div>
+  </div>
+  <style>
+    #chartdiv {
+    height: 50vh;
+    width: 100%;
+    z-index: -100;
+    font-size: 1.5vh;
+    padding: 0;
+    margin: auto;
+  }
+  </style>
+  
+  <script>
+    
+    var chart = am4core.create("chartdiv", am4charts.RadarChart);
+  
+  chart.data = [{
+  
+  "category": "Displacement - 22,000 tons",
+  "percent": 61
+  }, {
+  "category": "Speed - 30 knots",
+  "percent": 52
+  }, {
+  "category": "Range - 7,600 nautical miles",
+  "percent": 25
+  }, {
+  "category": "Belt Armor - 114 mm",
+  "percent": 26
+  }, {
+  "category": "Length - 240 m",
+  "percent": 68
+  }];
+  
+  /* Create axes */
+  var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+  categoryAxis.dataFields.category = "category";
+  
+  var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+  valueAxis.renderer.axisFills.template.fill = chart.colors.getIndex(2);
+  valueAxis.renderer.axisFills.template.fillOpacity = 0.05;
+  valueAxis.fillOpacity = 0;
+  
+  
+  /* Create and configure series */
+  var series = chart.series.push(new am4charts.RadarSeries());
+  series.dataFields.valueY = "percent";
+  series.dataFields.categoryX = "category";
+  series.name = "Sales";
+  series.strokeWidth = 3;
+  
+  series.tooltipText = "{valueY.formatNumber('')}";
+  
+  </script>
+	<p style="text-align: left; margin: 0 0 0 0; font-size: .69vw"><i>HMS Ark Royal shortly after her launch in 1937</i></p>
+  <p style="text-align: left; margin: 0 0 0 0; font-size: .69vw"><i>She was not completely intact when she launched; here, superstructure is missing as it was fitted post-launch</i></p>
+</div>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+	<span class="close">&times;</span>
+	<img class="modal-content" id="img01">
+	<div id="caption"></div>
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById("myModal");
+  
+  // Get the image and insert it inside the modal
+  var img = document.getElementById("arkImg");
+  var modalImg = document.getElementById("img01");
+
+  img.onclick = function(){
+	modal.style.display = "block";
+	modalImg.src = this.src;
+	captionText.innerHTML = this.alt;
+  }
+  window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() { 
+	modal.style.display = "none";
+  }
+  </script>
+
+<!--second text-->
+<h2 style="margin-top: 12px"><i>Ark Royal's</i> Service During World War II</h2>
+<p>
+  With the outbreak of World War II on the third of September, 1939, Germany's <i class="qtip tip-top" data-tip="German submarine">U-boat</i> fleet took up positions along the British coast, prepared to sink over 65,000 tons of shipping throughout the course of the War. In an effort to combat this, <i>Ark Royal</i> was assigned to a "hunter-killer" group - a small flotilla of destroyers and other anti-submarine vessels centered around an aircraft carrier. On 14 September, <i>Ark Royal's</i> group received a distress call from the cargo ship <i>SS Fanad Head,</i> which was under the pursuit of <i>U-30</i>, a German submarine. En-route to assist, <i>Ark Royal</i> was spotted by <i>U-39,</i> another submarine, and retaliated immediately. Multiple destroyers in the group deployed depth-charges, forcing <i>U-39</i> to surface and her crew to abandon ship, being the first submarine casualty of the War. Because of this detour, however, the hunter-killer fleet was late in reaching <i>SS Fanad Head,</i> which was already in possession of a boarding party from <i>U-30.</i> This gave the submarine enough time to retrieve her crew, torpedo the cargo ship, and escape unscathed. Thereafter, <i>Ark Royal</i> returned to base where she and her crew was inspected by Winston Churchill. Because of the attack from <i>U-39,</i> and the <i>HMS Courageous's</i> group undergoing a similar experience, the <i class="qtip tip-top" data-tip="The Admiralty was a department of the British government responsible for commanding the Royal Navy until it was dissolved in 1964.">Admiralty</i> decided that aircraft carriers were too important to be risked in hunter-killer groups. With this decision, <i>Ark Royal</i> was removed from her group, but she would see another engagement soon enough regardless.
+</p>
+<p>
+  In late September, <i>Ark Royal</i> sortied to rescue a British submarine, <i>Spearfish</i>, and engaged a small squadron of German aircraft. During the engagement, <i>Ark Royal</i> was nearly struck with a 1,000-kilogram bomb but managed to escape unscathed alongside <i>Spearfish.</i> For a short time, the engagement led Germany to believe <i>Ark Royal</i> had sunk. In the following months, <i>Ark Royal</i> took part in a number of missions, including hunting down the German heavy cruiser <i>Admiral Graf Spee,</i> which had taken the role of raiding commerce. On 16 April 1940, however, she and <i>Glorious</i> were recalled from their Mediterranean deployments to take part in a campaign along the Norwegian coast. Arriving at Scapa Flow on 23 April, 1940, the two carriers were redeployed alongside two cruisers, <i>Curlew</i> and <i>Berwick,</i> and a destroyer escort as part of Operation DX with the task of providing air cover for Allied forces in Norway after Germany's <i class="qtip tip-top" data-tip="Germany's invasion of Denmark and Norway, beginning the Norwegian Campaign."><i>Weserübung</i></i> invasion. The British force provided air support throughout the rest of April, but British command concluded that they could not hold the Germans back in southern Norway and commanded an evacuation. <i>Ark Royal</i> continued to provide air cover for the evacuating Allies, even fending off German bombers constantly trying to sink her. The evacuation was completed on the third of May, and <i>Ark Royal</i> returned to Scapa Flow. After being reassigned to Narvik to provide more air cover, it was decided that British forces there would be evacuated back to Britain as the German advance to the English Channel was the country's main worry. On their way back to Britain, <i>Glorious</i> and two of the group's destroyer escorts were sunk by the German battlecruisers <i>Scharnhorst</i> and <i>Gneisenau,</i> but <i>Ark Royal's</i> scouting aircraft failed to locate them for a counterattack. On 14 June, <i>Ark Royal</i> returned to Scapa Flow and was reassigned to the Mediterranean Fleet.
+</p>
+
+<div class="arkDiv" style="text-align: center; width: 95%">
+	<img src="images/Ark_Royal2.jpg" id="arkImg2" alt="HMS Ark Royal with Fairey Swordfish overhead" width="40%" height="auto">
+	<p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>HMS Ark Royal circa 1939, with some of the Fairey Swordfish from the 820 Naval Air Squadron overhead</i></p>
+</div>
+
+<!--Modal 2-->
+
+<div id="myModal2" class="modal">
+	<span class="close">&times;</span>
+	<img class="modal-content" id="img02" style="height: 95%; width: auto">
+	<div id="caption2"></div>
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById("myModal2");
+  
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var img = document.getElementById("arkImg2");
+  var modalImg = document.getElementById("img02");
+
+  img.onclick = function(){
+	modal.style.display = "block";
+	modalImg.src = this.src;
+	captionText.innerHTML = this.alt;
+  }
+  window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() { 
+	modal.style.display = "none";
+  }
+  </script>
+<br>
+<p>
+  On 23 June 1940, <i>Ark Royal</i> arrived at Gibraltar and joined Force H alongside HMS <i>Hood</i> and numerous other battleships and cruisers as a result of the increasing worries that at least some parts of the French fleet would turn coat to the Axis powers. <i>Ark Royal's</i> captain at the time, Cedric Holland, was sent to negotiate the surrender or scuttling of the French fleet at Mers-el-Kébir; when these demands were not met, Force H opened fire on the French fleet. Only the battleship <i>Strasbourg</i> escaped. Until 30 September, <i>Ark Royal</i> and most of Force H remained at Gibraltar, with the former providing air cover for the fleet and raids against Italy. Subsequently, <i>Ark Royal</i> was sent to West Africa to provide support for British negotiators attempting to convert <i class="qtip tip-top" data-tip="The portion of France that collaborated with Nazi Germany as an Axis power.">Vichy French</i> colonies to the Free French. These negotiations failed, and <i>Ark Royal</i> sortied bombers to attack military installations to support an unsuccessful attempt to take Dakar - the capital of Senegal, a colony of France in West Africa - by force. <i>Ark Royal</i> returned to Britain for a refit, lasting until 3 November, for repairs and the installation of a new flight deck barrier. From mid-December to mid-January, <i>Ark Royal</i> was ordered to relieve a now-wounded Mediterranean fleet by attacking multiple Italian targets while also encouraging the Spanish at Gibraltar not to turn to the Axis powers by demonstrating British might.
+</p>
+<p>
+  On 6 May 1941, a convoy sailing across the Mediterranean to reinforce Allied forces in Alexandria was escorted by <i>Ark Royal,</i> the battlecruiser <i>Renown,</i> the battleship <i>Queen Elizabeth,</i> and a significant cruiser and destroyer complement. This convoy, scouted by Italian aircraft, proved too tempting a prize for Axis forces; German and Italian aircraft were sortied, beginning their attack on 8 May. The bounty, however, proved too colossal for the Axis forces to take on. Throughout the day, <i>Ark Royal's</i> Fairey Fulmar fighters drove off over fifty enemy aircraft with the help of allied anti-air fire and radar coverage. On 18 May, the German battleship <i>Bismarck</i> and her heavy cruiser escort <i>Prinz Eugen</i> broke into the Atlantic to raid shipping when they sunk <i>Hood</i> and damaged <i>Prince of Wales.</i> A force including <i>Ark Royal</i> was deployed on 23 May to hunt down <i>Bismarck</i>. On 26 May, one of <i>Ark Royal's</i> Swordfish planes spotted and tailed her while the Home Fleet mobilized in pursuit. Fifteen more Swordfish bombers were sortied to delay <i>Bismarck</i> from reaching French territory where she would have additional air cover. These bombers struck the battleship thrice, forcing her to lose control and to sail in the direction of the British force where she would face overwhelming odds and inevitably sink. 
+</p>
+<div class="arkDiv" style="text-align: center; width: 95%">
+	<img src="images/Ark_Royal3.jpg" id="arkImg3" alt="Ark Royal sinking" width="40%" height="auto">
+	<p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>HMS Ark Royal sinking after being struck by U-81 torpedo off Gibraltar</i></p>
+  <p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>Crew rush to her port side to await rescue rescue from HMS Legion</i></p>
+  <p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>Image taken from HMS Hermione, 13 November, 1941</i></p>
+</div>
+
+<div id="myModal3" class="modal">
+	<span class="close">&times;</span>
+	<img class="modal-content" id="img03" style="height: 95%; width: auto">
+	<div id="caption3"></div>
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById("myModal3");
+  
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var img = document.getElementById("arkImg3");
+  var modalImg = document.getElementById("img03");
+
+  img.onclick = function(){
+	modal.style.display = "block";
+	modalImg.src = this.src;
+	captionText.innerHTML = this.alt;
+  }
+  window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() { 
+	modal.style.display = "none";
+  }
+  </script>
+<h2>End of <i>Ark Royal</i></h2>
+<p>
+  Even with the sinking of the <i>Bismarck,</i> the conflict on the Mediterranean Theatre remained relentless, and German forces were achieving their own victories and capturing more territory every day. With Egypt about to fall and Greece and Crete no longer able to supply Allied operations at Malta, <i>Ark Royal</i> was pressed into service to deliver supplies to Malta throughout June and July of 1941. Malta's ability to continue to fight posed a problem for Axis forces in Africa. Circumstantially, Adolf Hitler decided to send a flotilla of U-boats to the Mediterranean to attack shipping routes. On 10 November, <i>Ark Royal</i> was returning to Gibraltar after escorting a convoy to Malta and was told to keep vigilant, as there had been reports of German U-boats in the area. Three days later, at 15:40, the sonar operator aboard the destroyer HMS <i>Legion</i> detected a sound that he assumed to be the propellors of another destroyer. The next minute, <i>Ark Royal</i> was struck <i class="qtip tip-top" data-tip="Smack dab in the middle of her hull.">amidships</i> by a torpedo between her fuel bunkers and bomb store, right under her bridge island. The resulting hole caused significant damage and flooding, knocking out internal communications and causing the rear half of the ship to lose power. <i>Ark Royal</i> began to <i class="qtip tip-top" data-tip="To tilt to one side.">list</i> to her starboard side, and her captain gave the precautionary order for his crew to abandon ship. About half an hour after the explosion, and with <i>Ark Royal</i> seeming to stabilize, damage control parties were ordered back to the carrier in an effort to save her. Despite this, the flooding was becoming more of a threat, and the final order was given for <i>Ark Royal</i> to be abandoned. Almost a full day later, she capsized and sunk. The only casualty during the sinking was 44 year-old Able Seaman Edward Mitchell, who was killed when the torpedo (from <i>U-81</i>) struck. The other 1,487 officers and crew were transported to Gibraltar. 
+</p>
+<p>
+  In February 1942, <i>Ark Royal's</i> last captain, Loben Maund, was <i class="qtip tip-top" data-tip="Tried for criminal activity as an active member of a military.">court-martialled</i> and found guilty of negligence; he failed to ensure that damage control crews stayed on board after the general evacuation, and he failed to ensure that his ship was sufficiently prepared to face immediate damage. Despite this, the board tempered their judgement, as they acknowledged that the Captain was primarily focused on the well-being of his crew. In mid-May 1942, Maund was appointed as the Director of Combined Operations, Middle East, based at Alexandria. He would eventually find himself promoted to Rear Admiral in 1946. During investigations studying why <i>Ark Royal</i> sunk so easily, it was determined that there was a significant lack of backup power sources for a ship that required electricity for most of her services. These flaws would be taken into account in the designs of the <i>Illustrious</i> and <i>Implacable-</i>class carriers, which were under construction at the time.
+</p>
+<p>
+  The final resting place for the <i>Ark Royal</i> went undiscovered until mid-December 2002, when the wreck was discovered by an underwater survey company, C&C Technologies, Inc., 30 nautical miles from Gibraltar. According to more modern studies of the hull, it was discovered that restarting the engines to provide power increased stress on the hull, quickening flooding. With the lack of power, it became impossible to stop her from sinking, and it was determined that the loss of the <i>Ark Royal</i> was more the result of her design than the actions of her captain. Despite her loss, however, <i>Ark Royal</i> still paved the way for her successors to succeed. With <i>Ark Royal's</i> design flaws in mind, all six ships making up the <i>Illustrious</i> and <i>Implacable-</i>classes survived the war, with most of them seeing their fare share of damage and action. Their pedestal could not exist without a base, however; <i>Ark Royal</i> provides the lesson that allows technology to grow over time - that failure is the key to success.
+</p>
+
+</body>
+</html>

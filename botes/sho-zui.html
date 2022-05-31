@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="stylesheet/styles.css">
+	<title>IJN Shōkaku and Zuikaku</title>
+<style>
+.topnav a.active {
+background-color: #b9207a;
+color: white;
+}
+.topnav a.active:hover{
+  box-shadow: 0 0 6px 6px #b9207a;
+  transition: 0.15s;
+}
+.kakuDiv{
+	padding-top: 10px;
+	position: relative;
+  width: 20vw;
+}
+</style>
+</head>
+<body>
+	<!--Navbar-->
+  <div class="topnav" id = "navBar">
+    <a href="../index.html"class="bagel" id="home">Home</a>
+    <div class="dropdown">
+        <button class="dropbtn" id="bagel">United States Navy</button>
+        <div class="dropdown-content">
+          <a href="washington.html" class="bagel">Washington</a>
+          <a href="enterprise.html" class="bagel">Enterprise</a>
+          <a href="san_francisco.html" class="bagel">San Francisco</a>
+        </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn" id="tostido">British Royal Navy</button>
+      <div class="dropdown-content">
+          <a href="belfast.html" class="tostido">Belfast</a>
+          <a href="hood.html" class="tostido">Hood</a>
+          <a href="ark_royal.html" class="tostido">Ark Royal</a>
+      </div>
+  </div>
+  <div class="dropdown">
+      <button class="dropbtn" id="potato">Imperial Japanese Navy</button>
+      <div class="dropdown-content">
+          <a href="yamato.html" class="potato">Yamato</a>
+          <a href="sho-zui.html"class="active"><b>Shōkaku and Zuikaku</b></a>
+          <a href="ayanami.html"class="potato">Ayanami</a>
+      </div>
+  </div>
+  <div class="dropdown">
+      <button class="dropbtn" id="sourpatch">German <i>Kriegsmarine</i></button>
+      <div class="dropdown-content">
+          <a href="bismarck.html"class="sourpatch">Bismarck</a>
+          <a href="u-47.html"class="sourpatch">U-47</a>
+          <a href="prinz_eugen.html"class="sourpatch">Prinz Eugen</a>
+      </div>
+  </div>
+  <a href="battleship game/battleship.html"class="sourpatch" id="battleship" style="float:right">Play Battleship</a>
+  </div>
+<!--introductory text-->
+<h2 style="margin-top: 12px">The Crane Twins, <i>Shōkaku</i> and <i>Zuikaku</i></h2>
+<p>
+  The <i>Shōkaku-</i>class of Japanese aircraft carriers consisted of two ships: <i>Shōkaku</i> and <i>Zuikaku.</i> With the exception of the Battle of Midway, which resulted in the sinking of four of the Imperial Japanese Navy's thirteen fleet carriers, the <i>Shōkaku-</i>class participated in every single major naval action in the Pacific Theater. By the time of the sisters' commissioning in September of 1941, the United States passed a number of economic sanctions against Japan, preventing them from continuing to import what had been the majority of their oil supply. In an attempt to retaliate, <i class="qtip tip-top" data-tip="Admiral Isoroku Yamamoto was the commander-in-chief of the Imperial Japanese Navy's Combined Fleet.">Admiral Isoroku Yamamoto</i> ordered an attack on Pearl Harbor, one of the most major American naval bases at the time. The attack was meant to achieve two goals: following the crippling of their fleet, the United States would attempt to renegotiate with the Japanese, revoking the sanctions imposed on them. In addition, the action was meant to deter America from actively aiding the Allied forces, allowing Japan to go through with planned military actions in Southeast Asia without interference from the United States. The attack, of course, would end up backfiring, with America fully committing to the War and effectively sealing the Imperial Japanese Navy's fate.
+</p>
+<br>
+<!--Image-->
+<div class="kakuDiv" style=" margin-left: 5%; width: 95%">
+	<img src="images/Kaku.jpg" id="kakuImg" alt="IJN Zuikaku at Kobe" style="text-align: left" width="40%" height="auto">
+  <script src="http://cdn.amcharts.com/lib/4/core.js"></script>
+  <script src="http://cdn.amcharts.com/lib/4/charts.js"></script>
+  <div class="wrapper" style="text-align: right !important; width: 40%; float:right; margin-right: 8vw; padding: 0; max-height: fit-content;">
+  <div id="chartdiv"></div>
+  </div>
+  <style>
+    #chartdiv {
+    height: 50vh;
+    width: 100%;
+    z-index: -100;
+    font-size: 1.5vh;
+    padding: 0;
+    margin: auto;
+  }
+  </style>
+  
+  <script>
+    
+    var chart = am4core.create("chartdiv", am4charts.RadarChart);
+  
+  chart.data = [{
+  
+  "category": "Displacement - 32,100 tons",
+  "percent": 73
+  }, {
+  "category": "Speed - 34.5 knots",
+  "percent": 94
+  }, {
+  "category": "Range - 9,700 nautical miles",
+  "percent": 47
+  }, {
+  "category": "Belt Armor - 46-165 mm",
+  "percent": 32
+  }, {
+  "category": "Length - 257.5 m",
+  "percent": 82
+  }];
+  
+  /* Create axes */
+  var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+  categoryAxis.dataFields.category = "category";
+  
+  var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+  valueAxis.renderer.axisFills.template.fill = chart.colors.getIndex(2);
+  valueAxis.renderer.axisFills.template.fillOpacity = 0.05;
+  valueAxis.fillOpacity = 0;
+  
+  
+  /* Create and configure series */
+  var series = chart.series.push(new am4charts.RadarSeries());
+  series.dataFields.valueY = "percent";
+  series.dataFields.categoryX = "category";
+  series.name = "Sales";
+  series.strokeWidth = 3;
+  
+  series.tooltipText = "{valueY.formatNumber('')}";
+  
+  </script>
+	<p style="text-align: left; margin: 0 0 0 0; font-size: .69vw"><i>Zuikaku at Kobe on the day of her commissioning: 25 September 1941</i></p>
+</div>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+	<span class="close">&times;</span>
+	<img class="modal-content" id="img01">
+	<div id="caption"></div>
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById("myModal");
+  
+  // Get the image and insert it inside the modal
+  var img = document.getElementById("kakuImg");
+  var modalImg = document.getElementById("img01");
+
+  img.onclick = function(){
+	modal.style.display = "block";
+	modalImg.src = this.src;
+	captionText.innerHTML = this.alt;
+  }
+  window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() { 
+	modal.style.display = "none";
+  }
+  </script>
+
+<!--second text-->
+<h2 style="margin-top: 12px">Fifth Carrier Division</h2>
+<p>
+  While preparing for the attack on Pearl Harbor, the <i class="qtip tip-top" data-tip="The word 'Kaku' means 'crane' in Japanese. Shōkaku translates to 'soaring crane' while Zuikaku translates to 'auspicious crane.'">Crane</i> twins created the newly-formed Fifth Carrier Division. Due to their crew's inexperience, the Fifth would target airfields near Pearl Harbor as opposed to taking anti-ship roles. During the attack, their division struck Wheeler Army Airfield, Hickam Field, Ford Island, and Kaneohe Bay. Despite their pilots' lack of experience, the Fifth Carrier Division's aviators displayed exemplary performances; for the single dive bomber that was shot down during the attack, over 300 American aircraft were damaged or destroyed. Following the attack, the Fifth provided protection for the rest of the fleet against enemy submarines that were suspected of shadowing it. In January of 1942, the Division worked with <i>Akagi</i> and <i>Kaga</i> of the First Carrier Division for a joint operation against an Australian base at Rabaul. By the end of January, the Fifth moved to Truk, and they would remain in home waters until mid-March to counter any potential American carrier raids. 
+</p>
+<p>
+  Towards the end of March, <i>Shōkaku</i> and <i>Zuikaku</i> voyaged to Celebes Island to join the First Air Fleet for preparation to raid the Indian Ocean. On 5 April, the Cranes took part in the Eastern Sunday Raid on Colombo, Ceylon. Over a few days, the Japanese raiders would sink an armed merchant cruiser, two destroyers, a large cargo ship, a monitor, and the light carrier HMS <i>Hermes.</i> While moving back to Japan, the Fifth Carrier Division was detached to Truk to support Operation Mo - the planned capture of Port Moresby in New Ginuea. American code-breakers, however, intercepted the operational plans and sent the carriers <i>Yorktown</i> and <i>Lexington</i> to stop the invasion. On 6 May, now with the Battle of the Coral Sea underway, <i>Shōkaku</i> and <i>Zuikaku</i> fatally damaged the oiler USS <i>Neosho</i> and sunk her destroyer escort, <i>Sims,</i> after mistaking them for a carrier and a light cruiser. Later in the afternoon, there was an engagement in which the American carrier force, which was much closer to the Cranes than anticipated, launched planes that destroyed numerous Japanese bombers. On the morning of 8 May, both the American and Japanese carrier forces launched aircraft at about 9:00. Dive bombers struck <i>Shōkaku's</i> flight deck, disabling it, but she managed to evade all torpedoes. <i>Zuikaku</i> managed to remain under the cover of a rain squall, keeping her hidden and safe. The American carriers, however, were not as lucky. <i>Lexington</i> was struck twice by torpedoes and twice by bombs, damaging her enough so that she would need to be scuttled. <i>Yorktown</i> was unable to escape danger either, although the single bomb that struck her was not nearly as fatal. 
+</p>
+
+<div class="kakuDiv" style="text-align: center; width: 95%">
+	<img src="images/Kaku2.jpg" id="kakuImg2" alt="Planes from Shōkaku preparing to launch" width="40%" height="auto">
+	<p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>Array of fighters and bombers preparing to launch atop Shōkaku, 7 December, 1941</i></p>
+  <p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>Plane in foreground is a Mitsubishi A6M "Zero" fighter, background planes are Aichi D3A "Val" dive bombers</i></p>
+</div>
+
+<!--Modal 2-->
+
+<div id="myModal2" class="modal">
+	<span class="close">&times;</span>
+	<img class="modal-content" id="img02" style="height: 95%; width: auto">
+	<div id="caption2"></div>
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById("myModal2");
+  
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var img = document.getElementById("kakuImg2");
+  var modalImg = document.getElementById("img02");
+
+  img.onclick = function(){
+	modal.style.display = "block";
+	modalImg.src = this.src;
+	captionText.innerHTML = this.alt;
+  }
+  window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() { 
+	modal.style.display = "none";
+  }
+  </script>
+<h2>Birds of a Feather</h2>
+<p>
+  The results of the Battle of the Coral Sea are debatable. From the Japanese perspective, more American ships were damaged or sunk over the course of the battle, with the destruction of the <i>Lexington</i> taking away a quarter of the American carrier strength in the Pacific Theater. Inversely, the American force did manage to drive off the Japanese after destroying almost all of the Cranes' planes, preventing the invasion of Port Moresby and lessening the threat to the supply chain between America and Australia. Regardless, the <i>Shōkaku</i> sisters returned to Japan. On their way, however, <i>Shōkaku</i> herself was caught in a severe storm, flooding her nearly enough to capsize her. They managed to make it back to Japan, finally, although <i>Shōkaku</i> required three months of repairs and was not ready for action until August. For better or for worse, the twins were unable to participate in the Battle of Midway, which concluded with <i>Shōkaku</i> and <i>Zuikaku</i> being the only two remaining carriers from the Attack on Pearl Harbor. Following the battle, the Fifth Carrier Division would be dissolved and <i>Shōkaku</i> and <i>Zuikaku</i> would be redesignated as the First Carrier Division alongside the light carrier <i>Zuihō.</i> Regardless, the Cranes returned to duty in August and immediately deployed to take part in the Guadalcanal Campaign. On 24 August, the duo got into a brief engagement with two American carriers: the <i>Saratoga</i> and the Infamous <i class="qtip tip-top" data-tip="Enterprise was reported to be sunk on three different occasions during the War, inspiring the nickname Grey Ghost.">"Grey Ghost,"</i> <i>Enterprise.</i> The resulting attack damaged the battleship <i>North Carolina</i> and scored three hits on <i>Enterprise,</i> but much of the Japanese aviation force was destroyed by anti-aircraft fire and fighters. Both forces disengaged with each other as they were unable to gauge how damaged their opposition was, and the <i>Shōkaku</i> sisters returned to Truk for a few months. 
+</p>
+<p>
+  On 11 October, the First Carrier Division departed Truk to support a Japanese invasion on Henderson Field. Four days later, they encountered an American convoy consisting of barges, a minesweeper, and the destroyer USS <i>Meredith</i>; although the <i>Meredith</i> was quickly sunk, the carriers left the auxiliary ships untouched. On 26 October, the Japanese and American carrier forces engaged each other, and <i>Shōkaku</i> was quickly damaged by a bombing run from the USS <i>Hornet.</i> The American ship would be unable to revel in its success, however; <i>Hornet</i> was crippled after being hit with three bombs, two torpedoes, and being crashed into twice by planes. Alongside her sister, the repaired <i>Enterprise</i> also suffered a fair deal of damage once again after being struck twice by bombs. Further attacks would seal <i>Hornet's</i> impending fate, and she was finally sunk later in the day by the destroyers <i>Makigumo</i> and <i>Akigumo.</i> Once again, however, the Japanese aviation force lost a significant portion of its pilots, and the Cranes' aviators were losing many of their most experienced veterans every battle. On 2 November, the First Carrier Division returned home for repairs, training, and aircraft ferrying duties. 
+</p>
+<p>
+  With the tide of the war shifting in the Allies' favor, the <i>Shōkaku</i> sisters found themselves remaining on the insignificant sidelines until they were transferred to Singapore in February of 1944. In mid-June, now with the carrier <i>Taihō</i> replacing <i>Zuihō</i> in the Division, the trio found themselves engaged in the Battle of the Philippine Sea, engaging with the American Task Force 58. In the morning of 19 June, after the First Carrier Division launched their aircraft, the submarine USS <i>Albacore</i> torpedoed and sank the newly-commissioned <i>Taihō.</i> Following the initial submarine attack, another United States submarine, the <i>Cavalla,</i> struck <i>Shōkaku</i> multiple times, starting a number of fires, igniting fueling aircraft and causing flooding. A series of explosions sealed the Crane's fate, and <i>Shōkaku</i> sank at 12:10, almost an hour after <i>Cavalla's</i> attack. Now alone, <i>Zuikaku</i> was left to recover the Division's remaining aircraft. A retreat was ordered the next day, and <i>Zuikaku</i> was also struck by a bomb in her hangar, but her experienced damage control teams kept the resulting fire under control. The Battle of the Philippine Sea was a considerable disaster, resulting in the Imperial Japanese Navy losing its ability to conduct large-scale carrier actions in the Pacific Theater. In October, Zuikaku took part in the Battle of Leyte Gulf as the oldest and only experienced heavy carrier remaining in the Imperial Japanese Navy. Here, she found herself taking the role of sacrificial pawn; serving as a decoy meant to attract American carriers away from the task groups landing at and invading Leyte while the rest of the Japanese force reclaimed their territory.
+</p>
+<div class="kakuDiv" style="text-align: center; width: 95%">
+	<img src="images/Kaku3.jpg" id="kakuImg3" alt="Zuikaku's crew salute as her flag is lowered" width="40%" height="auto">
+	<p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>Zuikaku's crew salutes as her flag is lowered during the Battle off Cape Engaño, October 25, 1944</i></p>
+  <p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>Zuikaku is seen listing heavily to port, Admiral Jisaburo Ozawa shifts his flagship's flag over to the light cruiser Ōyodo</i></p>
+</div>
+
+<div id="myModal3" class="modal">
+	<span class="close">&times;</span>
+	<img class="modal-content" id="img03" style="height: 95%; width: auto">
+	<div id="caption3"></div>
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById("myModal3");
+  
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var img = document.getElementById("kakuImg3");
+  var modalImg = document.getElementById("img03");
+
+  img.onclick = function(){
+	modal.style.display = "block";
+	modalImg.src = this.src;
+	captionText.innerHTML = this.alt;
+  }
+  window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() { 
+	modal.style.display = "none";
+  }
+  </script>
+<h2>End of the <i>Shōkaku-</i>class</h2>
+<p>
+  On 24 October, <i>Zuikaku</i> launched aircraft against the United States Third Fleet alongside the carriers <i>Zuihō,</i> <i>Chitose,</i> and <i>Chiyoda.</i> Most of these aircraft never returned: some landed at Japanese landed bases at Luzon, while others were shot down or crashed into American ships as <i class="qtip tip-top" data-tip="A suicide bombing tactic employed by Japanese aviators in which they would crash their planes into Allied ships."><i>kamikaze</i></i> attackers, which helped sink the American light carrier <i>Princeton.</i> The next day, however, <i>Zuikaku</i> was swarmed by an American air attack and was struck by nine bombs and seven torpedoes, sealing her fate. At 13:58, the order was given to abandon ship, and she sank 16 minutes later. <i>Zuikaku</i> was the only heavy carrier in the Imperial Japanese Navy to have been sunk by aircraft-based torpedoes, with the others succumbing to dive bombers or submarine attacks.
+</p>
+<p>
+  As of 2022, the wrecks of the Crane twins remain unexplored, although the coordinates <i>Shōkaku</i> sank at are <i class="qtip tip-top" data-tip="Shōkaku sank bow-first at position 11°40′N 137°40′E.">known</i>. From their first deployment, the carriers managed to exceed Imperial Japanese Navy expectations, damaging all three of the esteemed <i>Yorktown-</i>class carriers, including <i>Enterprise</i> herself twice. While the Cranes took the backstage compared to the adulated carriers <i>Akagi,</i> <i>Kaga,</i> or the later-commissioned <i>Shinano,</i> their efforts in the Pacific Theater provided a fair number of small but rare victories against the American Navy. 
+</p>
+</body>
+</html>

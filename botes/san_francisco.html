@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>USS San Francisco CA-38</title>
+  <link rel="stylesheet" href="stylesheet/styles.css">
+<style>
+.topnav a.active {
+background-color: #326996;
+color: white;
+}
+.topnav a.active:hover{
+  box-shadow: 0 0 6px 6px #326996;
+  transition: 0.15s;
+}
+.sanDiv{
+	padding-top: 10px;
+	position: relative;
+  width: 20vw;
+}
+</style>
+</head>
+<body>
+	<!--Navbar-->
+  <div class="topnav" id = "navBar">
+    <a href="../index.html"class="bagel" id="home">Home</a>
+    <div class="dropdown">
+        <button class="dropbtn" id="bagel">United States Navy</button>
+        <div class="dropdown-content">
+          <a href="washington.html" class="bagel">Washington</a>
+          <a href="enterprise.html" class="bagel">Enterprise</a>
+          <a href="san_francisco.html" class="active"><b>San Francisco</b></a>
+        </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn" id="tostido">British Royal Navy</button>
+      <div class="dropdown-content">
+          <a href="belfast.html" class="tostido">Belfast</a>
+          <a href="hood.html" class="tostido">Hood</a>
+          <a href="ark_royal.html" class="tostido">Ark Royal</a>
+      </div>
+  </div>
+  <div class="dropdown">
+      <button class="dropbtn" id="potato">Imperial Japanese Navy</button>
+      <div class="dropdown-content">
+          <a href="yamato.html" class="potato">Yamato</a>
+          <a href="sho-zui.html"class="potato">Shōkaku and Zuikaku</a>
+          <a href="ayanami.html"class="potato">Ayanami</a>
+      </div>
+  </div>
+  <div class="dropdown">
+      <button class="dropbtn" id="sourpatch">German <i>Kriegsmarine</i></button>
+      <div class="dropdown-content">
+          <a href="bismarck.html"class="sourpatch">Bismarck</a>
+          <a href="u-47.html"class="sourpatch">U-47</a>
+          <a href="prinz_eugen.html"class="sourpatch">Prinz Eugen</a>
+      </div>
+  </div>
+  <a href="battleship game/battleship.html"class="sourpatch" id="battleship" style="float:right">Play Battleship</a>
+  </div>
+<!--introductory text-->
+<h2 style="margin-top: 12px">Sortie of a Steel Pincushion: <i>San Francisco</i> CA-38</h2>
+<p>The USS <i>San Francisco</i> CA-38 was the fifth of seven <i>New Orleans</i>-class heavy cruisers. She was laid down at the Mare Island Navy Yard in Vallejo, California on the ninth of September, 1931, making her a pre-war-era vessel. She was designed with the limitations of the 1922 Washington Naval Treaty in mind, allowing her a 10,000-ton standard <i class="qtip tip-top" data-tip="Refers to the weight of a ship, but is calculated indirectly by measuring the volume of water displaced by a ship and converting that value into weight.">displacement</i>. Originally, her relatively thin hull classified her as a light cruiser, but her 8-inch caliber main guns moved her up to a heavy cruiser status, although the term 'heavy cruiser' would not be dubbed until 1930's London Naval Treaty. <i>San Francisco</i> was launched on 9 March 1933 and was commissioned on 10 February 1034 under the command of Captain Royal Eason Ingersoll.</p>
+<br>
+<!--Image-->
+<div class="sanDiv" style=" margin-left: 5%; width: 95%">
+	<img src="images/San_Francisco.jpg" id="sanImg" alt="USS San Francisco, CA-38" style="text-align: left" width="40%" height="auto">
+  <script src="http://cdn.amcharts.com/lib/4/core.js"></script>
+  <script src="http://cdn.amcharts.com/lib/4/charts.js"></script>
+  <div class="wrapper" style="text-align: right !important; width: 40%; float:right; margin-right: 8vw; padding: 0; max-height: fit-content;">
+  <div id="chartdiv"></div>
+  </div>
+  <style>
+    #chartdiv {
+    height: 50vh;
+    width: 100%;
+    z-index: -100;
+    font-size: 1.5vh;
+    padding: 0;
+    margin: auto;
+  }
+  </style>
+  
+  <script>
+    
+    var chart = am4core.create("chartdiv", am4charts.RadarChart);
+  
+  chart.data = [{
+  
+  "category": "Displacement - 9,950 tons",
+  "percent": 19
+  }, {
+  "category": "Speed - 32.7 knots",
+  "percent": 87
+  }, {
+  "category": "Range - 10,000 nautical miles",
+  "percent": 50
+  }, {
+  "category": "Belt Armor - 3-5 in.",
+  "percent": 30
+  }, {
+  "category": "Length - 588 ft.",
+  "percent": 28
+  }];
+  
+  /* Create axes */
+  var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+  categoryAxis.dataFields.category = "category";
+  
+  var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+  valueAxis.renderer.axisFills.template.fill = chart.colors.getIndex(2);
+  valueAxis.renderer.axisFills.template.fillOpacity = 0.05;
+  valueAxis.fillOpacity = 0;
+  
+  
+  /* Create and configure series */
+  var series = chart.series.push(new am4charts.RadarSeries());
+  series.dataFields.valueY = "percent";
+  series.dataFields.categoryX = "category";
+  series.name = "Sales";
+  series.strokeWidth = 3;
+  
+  series.tooltipText = "{valueY.formatNumber('')}";
+  
+  </script>
+  
+
+	<p style="text-align: left; margin: 0 0 0 0; font-size: .69vw"><i>The San Francisco, minutes after being launched on 9 March 1933.<br>San Francisco Mare Island Naval Shipyard Ship Files</i></p>
+  
+</div>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+	<span class="close">&times;</span>
+	<img class="modal-content" id="img01">
+	<div id="caption"></div>
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById("myModal");
+  
+  // Get the image and insert it inside the modal
+  var img = document.getElementById("sanImg");
+  var modalImg = document.getElementById("img01");
+
+  img.onclick = function(){
+	modal.style.display = "block";
+	modalImg.src = this.src;
+	captionText.innerHTML = this.alt;
+  }
+  window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() { 
+	modal.style.display = "none";
+  }
+  </script>
+
+<!--second text-->
+<h2 style="margin-top: 12px">Preamble to Conflict, the Neutrality Patrol, and First Engagement</h2>
+<p>
+ After her <i class="qtip tip-top" data-tip="When a ship's performance is tested before she officially joins the service or after a major retrofit or crew change.">shakedown cruise</i>, <i>San Francisco</i> returned to Mare Island Navy Yard for gunnery installation and to be converted into a flagship, leading her into the new year. In 1935, <i>San Francisco</i> left for San Diego as the flagship of Cruiser Division 6 alongside <i>New Orleans</i> CA-32, <i>Minneapolis</i> CA-36, and <i>Tuscaloosa</i> CA-37. Over the course of the next few years, <i>San Francisco</i> took part in Fleet Problem XVI - a defensive provocation aimed towards the Japanese showing off the most powerful U.S. naval fleet to date, deterring any rambunctious or irresponsible schemes involving attacking America - and numerous other voyages involving fleet tactics and regular patrols. These relatively insignificant cruises ran until 1939, where the world inched closer and closer to a seemingly-inevitable war. In January of the same year, <i>San Francisco</i> took part in Fleet Problem XX - a simulated defense consisting of over a hundred ships and over half-a-thousand planes split into two teams where one team would attempt to invade the East Coast of the United States while the other team would defend. Following these exercises, <i>San Francisco</i> resumed her regular patrols, goodwill tours, and voyages until the start of World War II.
+</p>
+
+<p>
+ Two weeks into September, 1939, now with the rest of the world at War, <i>San Francisco</i> sailed south from the Virginian Naval Station Norfolk to join the Neutrality Patrol - a measure that would actively sweep the waters 200 miles off the coasts of North and South America to deter and report on any Axis surface raiders or <i class="qtip tip-top" data-tip="German submarine">U-boats</i>, with orders to shoot immediately after reporting them. These actions continued throughout the year alongside freighting passengers and cargo, and <i>San Francisco</i> moved to the Puget Sound Navy Yard in May 1940 for an overhaul. On 11 October 1941, she moved to her new home port, the Pearl Harbor Navy Yard, for yet another overhaul, which was scheduled for completion on the twenty-fifth of December. On 7 December, the day Pearl Harbor was attacked by the Japanese, <i>San Francisco</i> was still being refitted, with most of her armaments and crew absent. The crew members that were present reacted immediately; some secured <i>San Francisco</i> for watertightness, others boarded <i>New Orleans</i> CA-32 - the ship docked closest to <i>San Francisco</i> - to feed her crew ammunition and to control anti-air batteries, and the remaining crew desperately armed themselves with rifles and machine guns. Despite the ultimately-devastating attack, <i>San Francisco</i> herself remained undamaged. Alongside a newfound urgency, her repairs resumed and were completed on the fourteenth of December, ready to fight in the War that her country finally found itself a part of.
+</p>
+
+
+<div class="sanDiv" style="text-align: center; width: 95%">
+	<img src="images/San_Francisco2.jpg" id="sanImg2" alt="A Battered USS San Francisco" width="40%" height="auto">
+	<p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>USS San Francisco (CA 38) At Pearl Harbor, with her crew manning the rails in "Whites", 4 December 1942.</i></p>
+  <p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>En route to the west coast for repair of damage received during the Naval Battle of Guadalcanal, on 12-13 November 1942.</i></p>
+  <p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>Official U.S. Navy Photograph, now in the collections of the National Archives - 80-G-21099.</i></p>
+</div>
+
+<!--Modal 2-->
+
+<div id="myModal2" class="modal">
+	<span class="close">&times;</span>
+	<img class="modal-content" id="img02" style="height: 95%; width: auto">
+	<div id="caption2"></div>
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById("myModal2");
+  
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var img = document.getElementById("sanImg2");
+  var modalImg = document.getElementById("img02");
+
+  img.onclick = function(){
+	modal.style.display = "block";
+	modalImg.src = this.src;
+	captionText.innerHTML = this.alt;
+  }
+  window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() { 
+	modal.style.display = "none";
+  }
+  </script>
+<br>
+<h2 style="margin-top: 12px"><i>San Francisco</i>: Immortal Phoenix</h2>
+<p>
+ In early 1942, <i>San Francisco</i> was tasked with a lot of 'busywork' while the rest of the fleet carried out more offensive operations. As a result, she found herself as a member of a larger variety of Task Forces. In January, as a part of Task Force 8, she made for Tutuila, Samoa to provide cover for troop transports raiding Japanese installations in the Gilbert and Marshall islands. In February, she left Samoa to rejoin Cruiser Division 6, now a part of Task Force 11, for an offensive on Rabaul, a British township township captured by the Japanese that now served as a major hub for military and naval operations in the South Pacific. On their way, however, the Task Force was attacked by two waves of Japanese bombers; while they were summarily shot down, the fleet had lost its element of surprise and retreated eastward. For a time after the cancelled attack, <i>San Francisco</i> saw a relative lack of action, being assigned primarily to support and cover troop transport deployments. In October of 1942, however, <i>San Francisco</i> finally began to take part in major campaigns. On 7 October, now a part of Task Force 64, she moved into the Solomon Islands to cover Allied reinforcements and to intercept any potential Japanese operations trying to do the same for their troops. Four days later, the Task Force intercepted a Japanese force, beginning the Battle of Cape Esperance.
+</p>
+<p>
+ The Battle of Cape Esperance took place in the pitch dark of night, with any light provided by the moon gone over the horizon. Rear Admiral Norman Scott took command of the American Task Force with <i>San Francisco</i> as his flagship, despite the light cruisers <i>Helena</i> and <i>Boise</i> sporting new, state-of-the-art SG radars. Because of the poor visibility, the American force had less-than-stellar coordination, with multiple accounts of Allied ships breaking from their own formations, failing to report their actions and sightings to Scott, and following their own headings. At 23:46, <i>Helena</i>, mistakenly believing that Scott was aware of approaching Japanese warships, radioed him asking for permission to engage. Because of the nature of the communication, however, Scott interpreted the message as <i>Helena</i> asking for Scott to acknowledge that he received the communication, which he acknowledged. This miscommunication gave <i>Helena's</i> crew the permission they needed to engage the Japanese fleet, and she opened fire alongside other members in the American Task Force, including - to Scott's surprise - <i>San Francisco</i>. The Japanese Rear Admiral, Aritomo Gotō, not expecting to engage with an American Task Force that night, assumed it was an act of friendly fire. Minutes later, his lookouts identified the opposition as American, but he remained a skeptic and directed his fleet to flash identification signals. As his crew carried out their order, a full salvo struck the <i class="qtip tip-top" data-tip="Imperial Japanese Navy">IJN</i> <i>Aoba</i>'s - Gotō's flagship's - superstructure, riddling her with up to 40 shells and mortally wounding Gotō. After a brief hiatus, during which Scott confirmed that the ships his force was firing at were not American, the bombardment continued, resulting in Japan's retaliation. Their delayed reaction, however, cost them dearly: the result of the battle ultimately cost the Imperial Japanese Navy a heavy cruiser alongside another in dire need of repairs with three destroyers at the bottom of the sea by the next day. The American fleet, comparatively, lost one destroyer with another one damaged alongside two light and heavy cruisers. Although a strategic victory for the U.S., the Japanese bombarded and invaded Henderson Field, the airbase that was being fought for during the battle, only two days later.
+</p>
+<p>
+  Towards the end of October, <i>San Francisco</i> also took part in the First Naval Battle of Guadalcanal. While Scott also took part in the battle following Cape Esperance, Rear Admiral Daniel Callaghan took command of the upcoming campaign due to seniority and chose <i>San Francisco</i> as his flagship, leaving Scott aboard the light cruiser <i>Atlanta</i>. Immediately following the start of the battle, a damaged Japanese bomber crashed into <i>San Francisco's</i> control aft, demolishing it and killing or wounding dozens. Damaged but still functional, <i>San Francisco</i> reassembled with the rest of her force before moving into Lengo Channel. Two weeks later, the force intercepted a Japanese fleet, marking the first naval engagement of the campaign. <i>Atlanta</i> was the initial focus of Japanese retaliation and was heavily damaged by gunfire and a torpedo. Disabled, she drifted into <i>San Francisco's</i> line of fire. This inflicted even greater damage, resulting in the deaths of the majority of <i>Atlanta's</i> bridge crew and Rear Admiral Scott. The American Force retrained their armaments to target the IJN <i>Hiei</i>, but <i>San Francisco</i> was fired on first by <i>Kirishima</i>, <i>Hiei</i>, <i>Inazumi</i>, and <i>Ikazuchi</i>, devastating her and leading to the death of Rear Admiral Callaghan. During the confrontation, however, <i>San Francisco</i> managed to damage <i>Hiei's</i> steering gear room, crippling her ability to maneuver. This attack, combined with destroyers attacking her at close range, led to the eventual destruction of <i>Hiei</i>, as flooding caused her to lose complete control, leaving her open to American bombing runs and forcing her escorting destroyers to scuttle her. Even with the beating <i>San Francisco</i> took, she managed to shamble to safety under <i>Helena's</i> protection, who managed to ward off attacks from the IJN ships <i>Amatsukaze</i>, <i>Asagumo</i>, <i>Murasame</i>, and <i>Samidare</i>, and eventually made her way to the Mare Island Naval Shipyard for repairs. Despite the destruction of <i>Hiei</i>, the IJN quickly rendered most of the American force ineffective, with only <i>Helena</i> and <i>Fletcher</i>, a destroyer, still capable of fighting back. Even though the Japanese victory was all but confirmed, their Admiral, Hiroaki Abe, decided to call off his attack on Henderson Field due to ammunition expenditure. This resulted in Abe taking the full brunt of <i class="qtip tip-top" data-tip="Admiral Isoroku Yamamoto was the commander-in-chief of the Imperial Japanese Navy's Combined Fleet.">Admiral Yamamoto's</i> fury; Abe was relieved of his command and was forced to resign from the Navy shortly after.
+</p>
+<div class="sanDiv" style="text-align: center; width: 95%">
+	<img src="images/San_Francisco3.jpg" id="sanImg3" alt="San Francisco sporting Measure 33 Camouflage" width="40%" height="auto">
+	<p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>San Francisco (CA-38) off the Mare Island Navy Yard, California, following overhaul, 13 October 1944.</i></p>
+  <p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>Camouflage is Measure 33, Design 13d.</i></p>
+  <p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>Photograph from the Bureau of Ships Collection in the U.S. National Archives. Catalog #: 19-N-73588</i></p>
+</div>
+
+<!--Modal 3-->
+<!--Modal 2-->
+
+<div id="myModal3" class="modal">
+	<span class="close">&times;</span>
+	<img class="modal-content" id="img03" style="height: 95%; width: auto">
+	<div id="caption3"></div>
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById("myModal3");
+  
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var img = document.getElementById("sanImg3");
+  var modalImg = document.getElementById("img03");
+
+  img.onclick = function(){
+	modal.style.display = "block";
+	modalImg.src = this.src;
+	captionText.innerHTML = this.alt;
+  }
+  window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() { 
+	modal.style.display = "none";
+  }
+  </script>
+<h2>End of <i>San Francisco</i></h2>
+<p>
+ After Guadalcanal, <i>San Francisco</i> recieved a modernization retrofit similar to other American cruisers, granting her a reinforced hull, a wider array of anti-air armaments, and an SG radar just like her guardian angel <i>Helena's</i>. After her modernization, <i>San Francisco</i> took up escort duties once more. For the next year and a half, she performed a variety of patrol, rescue, and defensive operations before finding herself in the Battle of the Philippine Sea on 19 June, 1944. The battle itself is recorded as one of the "largest" naval battles in history, with the displacement of the American Fast Carrier Task Force (Task Force 58) being the largest to ever make up a naval formation. Although she played a tertiary role compared to the large force of American carriers, the battle ended in a decisive victory for the Allied forces. The Imperial Japanese Navy never truly recovered from the Battle of the Philippine Sea, as it disrupted their ability to conduct large-scale carrier actions. Thereafter, <i>San Francisco</i> moved between Saipan and Guam, providing fire support for an invasion force attempting to take the former (the event would be dubbed the Battle of Saipan or 'Pacific D-Day') and bombarding Japanese targets on the latter. In 1945, she took part in a handful of engagements, including the Battle of Okinawa which involved the Japanese battleship <i>Yamato</i>'s destruction. After her stay at Okinawa, <i>San Francisco</i> moved to the Philippines to take part in Operation Downfall - the invasion of the Japanese home islands. The operation was cancelled, however, due to Japan surrendering after the destruction of Hiroshima and Nagasaki at the hands of American nuclear devices. With the cessation of hostilities, <i>San Francisco</i> and her crew prepared for more peaceful duties.
+</p>
+<p>
+ After making way to the China coast and covering minesweeping operations, <i>San Francisco</i>, now serving as Rear Admiral Jerauld Wright's flagship and once again taking the mantle of Cruiser Division 6's leadership, anchored at Inchon, Korea. Here, Wright acted as the senior member of the committee for the surrender of Japanese naval forces in Korea. In late November 1945, <i>San Francisco</i> headed towards the home promised to her by her namesake, arriving in San Francisco in mid-December. Continuing on her way and eventually anchoring in Philadelphia, Pennsylvania, <i>San Francisco</i> for inactivation and decommissioning. At this point, however, <i>San Francisco</i> was not scrapped, but was instead kept in the Philadelphia group of the Atlantic Reserve Fleet - a benchwarmer, should an emergency need ever arise that required the use of more ships. Luckily, such a need never arose. On the first of March, 1959, <i>San Francisco's</i> name was struck from the Naval Vessel Register and she was sold to the Union Mineral and Alloys Corp. of New York. In 1961, the unsinkable <i>San Francisco</i> was scrapped at Panama City in Florida. Like many of the other ships scrapped after World War II, however, pieces of her hull still remain to commemorate her resilience. In the Land's End park of San Francisco, California, a part of CA-38's bridge that was replaced during her modernization in 1942 rests next to a plaque remembering the approximately one-hundred sailors and seven Marines who died aboard the <i>San Francisco</i>. Her old ship's bell also still rings to this day inside the Marines' Memorial Club in San Francisco, proving that <i>San Francisco</i> CA-38 truly is immortal.
+</p>
+</body>
+</html>
