@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="stylesheet/styles.css">
+	<title>IJN Yamato</title>
+<style>
+.topnav a.active {
+background-color: #b9207a;
+color: white;
+}
+.topnav a.active:hover{
+  box-shadow: 0 0 6px 6px #b9207a;
+  transition: 0.15s;
+}
+.yamatoDiv{
+	padding-top: 10px;
+	position: relative;
+  width: 20vw;
+}
+</style>
+</head>
+<body>
+	<!--Navbar-->
+  <div class="topnav" id = "navBar">
+    <a href="../index.html"class="bagel" id="home">Home</a>
+    <div class="dropdown">
+        <button class="dropbtn" id="bagel">United States Navy</button>
+        <div class="dropdown-content">
+          <a href="washington.html" class="bagel">Washington</a>
+          <a href="enterprise.html" class="bagel">Enterprise</a>
+          <a href="san_francisco.html" class="bagel">San Francisco</a>
+        </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn" id="tostido">British Royal Navy</button>
+      <div class="dropdown-content">
+          <a href="belfast.html" class="tostido">Belfast</a>
+          <a href="hood.html" class="tostido">Hood</a>
+          <a href="ark_royal.html" class="tostido">Ark Royal</a>
+      </div>
+  </div>
+  <div class="dropdown">
+      <button class="dropbtn" id="potato">Imperial Japanese Navy</button>
+      <div class="dropdown-content">
+          <a href="yamato.html" class="active"><b>Yamato</b></a>
+          <a href="sho-zui.html"class="potato">Shōkaku and Zuikaku</a>
+          <a href="ayanami.html"class="potato">Ayanami</a>
+      </div>
+  </div>
+  <div class="dropdown">
+      <button class="dropbtn" id="sourpatch">German <i>Kriegsmarine</i></button>
+      <div class="dropdown-content">
+          <a href="bismarck.html"class="sourpatch">Bismarck</a>
+          <a href="u-47.html"class="sourpatch">U-47</a>
+          <a href="prinz_eugen.html"class="sourpatch">Prinz Eugen</a>
+      </div>
+  </div>
+  <a href="minesweeper game/minesweeper.html"class="sourpatch" id="battleship" style="float: right">Play Minesweeper</a>
+  </div>
+<!--introductory text-->
+<h2 style="margin-top: 12px">IJN <i>Yamato,</i> Eastern Giant</h2>
+<p>
+  The Imperial Japanese Navy's <i>Yamato-</i>class battleship was the heaviest and most powerful warship ever designed. Fully loaded, it carried a <i class="qtip tip-top" data-tip="Refers to the weight of a ship, but is calculated indirectly by measuring the volume of water displaced by a ship and converting that value into weight.">displacement</i> of over 70,000 tons with nine 46 cm main cannons, the largest ever installed on any naval vessel. Laid down at the Kure Naval Aresnal, Hiroshima, on the fourth of November, 1937, <i>Yamato</i> was designed to counter the numerically-superior United States Navy, and resulted only after Japan withdrew from the Washington Naval Treaty of 1922. Built in extreme secrecy and in a dockyard that had to be modified for her gargantuan hull, <i>Yamato</i> would not be launched until 8 August, 1940. Before her commissioning on 16 December, 1941, however, <i>Yamato</i> would undergo various <i class="qtip tip-top" data-tip="When a ship's performance is tested before she officially joins the service or after a major retrofit or crew change.">sea trials</i> to test her abilities. Following her commissioning, she would join fellow battleships <i>Nagato</i> and <i>Mutsu</i> in the 1st Battleship Division. 
+</p>
+<br>
+<!--Image-->
+<div class="yamatoDiv" style=" margin-left: 5%; width: 95%">
+	<img src="images/Yamato.jpg" id="yamatoImg" alt="IJN Yamato in final fitting-out stages" style="text-align: left" width="40%" height="auto">
+  <script src="http://cdn.amcharts.com/lib/4/core.js"></script>
+  <script src="http://cdn.amcharts.com/lib/4/charts.js"></script>
+  <div class="wrapper" style="text-align: right !important; width: 40%; float:right; margin-right: 8vw; padding: 0; max-height: fit-content;">
+  <div id="chartdiv"></div>
+  </div>
+  <style>
+    #chartdiv {
+    height: 50vh;
+    width: 100%;
+    z-index: -100;
+    font-size: 1.5vh;
+    padding: 0;
+    margin: auto;
+  }
+  </style>
+  
+  <script>
+    
+    var chart = am4core.create("chartdiv", am4charts.RadarChart);
+  
+  chart.data = [{
+  
+  "category": "Displacement - 65,000 tons",
+  "percent": 99
+  }, {
+  "category": "Speed - 27 knots",
+  "percent": 19
+  }, {
+  "category": "Range - 7,200 nautical miles",
+  "percent": 23
+  }, {
+  "category": "Belt Armor - 410 mm",
+  "percent": 99
+  }, {
+  "category": "Length - 256 m",
+  "percent": 81
+  }];
+  
+  /* Create axes */
+  var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+  categoryAxis.dataFields.category = "category";
+  
+  var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+  valueAxis.renderer.axisFills.template.fill = chart.colors.getIndex(2);
+  valueAxis.renderer.axisFills.template.fillOpacity = 0.05;
+  valueAxis.fillOpacity = 0;
+  
+  
+  /* Create and configure series */
+  var series = chart.series.push(new am4charts.RadarSeries());
+  series.dataFields.valueY = "percent";
+  series.dataFields.categoryX = "category";
+  series.name = "Sales";
+  series.strokeWidth = 3;
+  
+  series.tooltipText = "{valueY.formatNumber('')}";
+  
+  </script>
+	<p style="text-align: left; margin: 0 0 0 0; font-size: .69vw"><i>IJN Yamato in the late stages of construction at Kure Naval Base, 20 September, 1941</i></p>
+</div>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+	<span class="close">&times;</span>
+	<img class="modal-content" id="img01">
+	<div id="caption"></div>
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById("myModal");
+  
+  // Get the image and insert it inside the modal
+  var img = document.getElementById("yamatoImg");
+  var modalImg = document.getElementById("img01");
+
+  img.onclick = function(){
+	modal.style.display = "block";
+	modalImg.src = this.src;
+	captionText.innerHTML = this.alt;
+  }
+  window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() { 
+	modal.style.display = "none";
+  }
+  </script>
+
+<!--second text-->
+<h2 style="margin-top: 12px">The Sixty-Five Thousand-Ton Turtle</h2>
+<p>
+  On 12 February, 1942, <i>Yamato</i> became the flagship of the entire Japanese Combined Fleet under <i class="qtip tip-top" data-tip="Admiral Isoroku Yamamoto was the commander-in-chief of the Imperial Japanese Navy's Combined Fleet.">Admiral Isoroku Yamamoto</i> shortly after his attack on Pearl Harbor. Finally participating in her first non-simulated operation, <i>Yamato</i> left Hiroshima Bay on 27 May to take part in the Battle of Midway, although she never had the chance to engage any of the American opposition that had conclusively dominated the battle. Initially, a Japanese carrier fleet at Midway planned to lure an American force including the carriers <i>Yorktown,</i> <i>Hornet,</i> and <i>Enterprise</i> into Japanese surface combatants including <i>Yamato.</i> This plan would fall flat, however, as American code-breakers managed to determine the plans of the supposed ambush, allowing the United States Navy to prepare their own counter. The results were disastrous for the Imperial Japanese Navy, with four carriers and two cruisers sinking after destroying only the <i>Yorktown</i> and one destroyer. Despite the Battle of Midway technically being <i>Yamato's</i> first appearance in the Pacific Theater, she ended up watching from the sidelines what is widely considered one of the major turning points in the War in the Pacific.
+</p>
+<p>
+  After withdrawing from the Battle of Midway, <i>Yamato</i> made her way back to Hiroshima Bay before redeploying to Truk for most of the duration of the Guadalcanal Campaign. In February of 1943, <i>Yamato</i> was replaced by <i>Musashi</i> as flagship of the Combined Fleet and Captain Chiaki Matsuda was assigned to command <i>Yamato.</i> Almost an entire insignificant year passed, and in December both <i>Yamato-</i>class sisters were pressed into service as transport vessels. On Christmas, <i>Yamato</i> was struck by the American submarine <i>Skate</i> while the former was transporting troops and supplies. Although she took on about 3,000 tons of water, she reached Truk later that day where the repair ship <i>Akashi</i> would patch her up enough so that she could reach Kure for repairs. During her stay at Kure, <i>Yamato</i> was given upgrades to her radar and anti-aircraft systems alongside numerous minor changes. In late-April of 1944, she made for the Philippines where she would take part in a series of battles that would lead to a conclusion for the Pacific War.
+</p>
+
+<div class="yamatoDiv" style="text-align: center; width: 95%">
+	<img src="images/Yamato2.jpg" id="yamatoImg2" alt="Yamato and Musashi near Truk Islands" width="40%" height="auto">
+	<p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>Yamato (left) and Musashi anchored in Truk Lagoon, sometime between early and mid-1943</i></p>
+</div>
+
+<!--Modal 2-->
+
+<div id="myModal2" class="modal">
+	<span class="close">&times;</span>
+	<img class="modal-content" id="img02" style="height: 95%; width: auto">
+	<div id="caption2"></div>
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById("myModal2");
+  
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var img = document.getElementById("yamatoImg2");
+  var modalImg = document.getElementById("img02");
+
+  img.onclick = function(){
+	modal.style.display = "block";
+	modalImg.src = this.src;
+	captionText.innerHTML = this.alt;
+  }
+  window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() { 
+	modal.style.display = "none";
+  }
+  </script>
+<h2>Last Year of the Pacific Theater</h2>
+<p>
+  By mid-1944, the Imperial Japanese Navy was forced to take a more defensive role after suffering multiple significant losses in major battles such as in Midway or in the Philippine Sea, where <i>Yamato's</i> powerful design would once again watch from the sidelines as another fleet of carriers was sunk, consequently crippling Japan's ability to conduct large-scale carrier operations in the Pacific. <i>Yamato</i> went on to take part in the Leyte Gulf Campaign, where she would be struck by two armor-piercing bombs from aircraft from the USS <i>Essex</i> during the Battle of the Sibuyan Sea, but this damage would not prove significant. Inversely, <i>Yamato's </i>sister ship <i>Musashi</i> became the focus of the Allies in the same battle, and was sunk after suffering hits from 17 bombs and 19 torpedoes. <i>Yamato</i> was led to the Battle off Samar, the centermost action of the Leyte Gulf Campaign. During the initial stages of the battle, <i>Yamato</i> for engaged surface targets the first time, hitting several American ships and possibly sinking the USS <i>Gambier Bay</i>. Although this engagement fulfilled <i>Yamato's</i> main purpose of engaging enemy surface targets, she would not do so for the rest of the War as air superiority became more significant than straightforward naval power. After the conclusion of the Leyte Gulf Campaign, <i>Yamato</i> finally returned to the Kure Naval Base for repairs.
+</p>
+
+<div class="yamatoDiv" style="text-align: center; width: 95%">
+	<img src="images/Yamato3.jpg" id="yamatoImg3" alt="Yamato under heavy air attack" width="40%" height="auto">
+	<p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>Yamato maneuvers to avoid an air assault from US Navy Task Force 58 planes off Kure</i></p>
+  <p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>Image taken from a USS Hornet plane, 19 March, 1945</i></p>
+</div>
+
+<div id="myModal3" class="modal">
+	<span class="close">&times;</span>
+	<img class="modal-content" id="img03" style="height: 95%; width: auto">
+	<div id="caption3"></div>
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById("myModal3");
+  
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var img = document.getElementById("yamatoImg3");
+  var modalImg = document.getElementById("img03");
+
+  img.onclick = function(){
+	modal.style.display = "block";
+	modalImg.src = this.src;
+	captionText.innerHTML = this.alt;
+  }
+  window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() { 
+	modal.style.display = "none";
+  }
+  </script>
+<h2>End of <i>Yamato</i></h2>
+<p>
+  On 19 March, 1945, American aircraft from Task Group 58 attacked Kure Harbour and damaged 16 warships in total, although <i>Yamato</i> herself suffered relatively minor damage. Shortly after, on the first of April, Allied forces invaded Okinawa, forcing the Imperial Japanese Navy to commit the majority of its remaining surface strength into repelling the United States Navy back off of Okinawa. The operation would be dubbed Ten-Go and represented Japan's final major naval operation in the Pacific Theater. <i>Yamato</i> was planned to beach herself to act as an unsinkable gun emplacement until her destruction, and she only brought enough fuel for a one-way trip to Okinawa. Once again, however, the Japanese plans were intercepted by American code-breakers and the Allies braced themselves for an assault. On 7 April, almost 300 American bombers attacked the Japanese fleet, and <i>Yamato</i> herself was barraged with multiple bombs and torpedoes. The dreadnought was crippled, with a number of her armaments being unusable and a significant portion of her rooms being flooded. Even so, <i>Yamato</i> survived the first attack, and her crew took what time they had to try to repair what they could. In only fifteen minutes after the initial attack ended, however, the American force assaulted the Imperial Japanese Navy once again. <i>Yamato</i> was similarly crippled even further, and a third attack would seal the fate of <i>Yamato</i> and her crew. At 14:02, the order was given to abandon the <i>Yamato</i> as she continued to heavily <i class="qtip tip-top" data-tip="To tilt to one side.">list</i> to port. At about 14:23, <i>Yamato</i> capsized, and she sank shortly after. Before she sank, <i>Yamato</i> was struck with about 11 torpedoes and 6 bombs, and of the entire Japanese force involved with Operation Ten-Go, only four destroyers survived.
+</p>
+<p>
+  In 1982, <i>Yamato's</i> final resting place was found during an expedition to the East China Sea. She lies about 290 kilometerss south of Kyushu under 340 meters of water split into two main pieces. In May of 2016, the wreck was surveyed using digital technology, resulting in a nine-minute video that is being shown at the Yamato Museum in Kure.
+</p>
+<p>
+  From their inceptions, <i>Yamato</i> and <i>Musashi</i> carried the weight of cultural significance on their shoulders. Representing the peak of Imperial Japan's surface-based naval engineering and serving as a beacon of morale similar to the <i class="qtip tip-top" data-tip="The Kriegsmarine was Nazi Germany's navy."><i>Kriegsmarine's</i></i> <i>Bismarck,</i> she still holds a prideful place in the hearts of many Japanese people, serving a new role as a symbol of national, patriotic pride and an example of technical ingenuity instead of existing solely as a weapon created for war.
+</p>
+
+</body>
+</html>

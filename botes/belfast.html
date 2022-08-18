@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="stylesheet/styles.css">
+	<title>HMS Belfast</title>
+<style>
+.topnav a.active {
+background-color: #a3a109;
+color: white;
+}
+.topnav a.active:hover{
+  box-shadow: 0 0 6px 6px #a3a109;
+  transition: 0.15s;
+}
+.belfastDiv{
+	padding-top: 10px;
+	position: relative;
+  width: 20vw;
+}
+</style>
+</head>
+<body>
+	<!--Navbar-->
+  <div class="topnav" id = "navBar">
+    <a href="../index.html"class="bagel" id="home">Home</a>
+    <div class="dropdown">
+        <button class="dropbtn" id="bagel">United States Navy</button>
+        <div class="dropdown-content">
+          <a href="washington.html" class="bagel">Washington</a>
+          <a href="enterprise.html" class="bagel">Enterprise</a>
+          <a href="san_francisco.html" class="bagel">San Francisco</a>
+        </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn" id="tostido">British Royal Navy</button>
+      <div class="dropdown-content">
+          <a href="belfast.html" class="active"><b>Belfast</b></a>
+          <a href="hood.html" class="tostido">Hood</a>
+          <a href="ark_royal.html" class="tostido">Ark Royal</a>
+      </div>
+  </div>
+  <div class="dropdown">
+      <button class="dropbtn" id="potato">Imperial Japanese Navy</button>
+      <div class="dropdown-content">
+          <a href="yamato.html" class="potato">Yamato</a>
+          <a href="sho-zui.html"class="potato">Shōkaku and Zuikaku</a>
+          <a href="ayanami.html"class="potato">Ayanami</a>
+      </div>
+  </div>
+  <div class="dropdown">
+      <button class="dropbtn" id="sourpatch">German <i>Kriegsmarine</i></button>
+      <div class="dropdown-content">
+          <a href="bismarck.html"class="sourpatch">Bismarck</a>
+          <a href="u-47.html"class="sourpatch">U-47</a>
+          <a href="prinz_eugen.html"class="sourpatch">Prinz Eugen</a>
+      </div>
+  </div>
+  <a href="minesweeper game/minesweeper.html"class="sourpatch" id="battleship" style="float: right">Play Minesweeper</a>
+  </div>
+  
+</div>
+<!--introductory text-->
+<h2 style="margin-top: 12px">One in Ten: HMS <i>Belfast</i></h2>
+<p>
+  The HMS <i>Belfast</i> is a Town-class light cruiser laid down on the tenth of December, 1936, at the Harlandd and Wolff Shipyard. Named after the capital city of Northern Ireland, she was launched on Saint Patrick's Day, 1938, and was commissioned in August, 1939, shortly before the world entered the Second World War. The Town class acted as the <i class="qtip tip-top" data-tip="The Admiralty was a department of the British government responsible for commanding the Royal Navy until it was dissolved in 1964.">British Admiralty's</i> response to the Imperial Japanese Navy's <i>Mogami-</i>class cruiser and consisted of ten cruisers split into three subclasses: <i>Southampton, Gloucester,</i> and <i>Edinburgh,</i> the last of which contained <i>Belfast</i>. <i>Belfast</i> had substantial weaponry directed by an Admiral Fire Control Table (or A.F.C.T) that allowed her to strike her targets rhythmically, accurately, and efficiently. 
+</p>
+<br>
+<!--Image-->
+<div class="belfastDiv" style=" margin-left: 5%; width: 95%">
+	<img src="images/Belfast.png" id="belfastImg" alt="HMS Belfast" style="text-align: left" width="40%" height="auto">
+  <script src="http://cdn.amcharts.com/lib/4/core.js"></script>
+  <script src="http://cdn.amcharts.com/lib/4/charts.js"></script>
+  <div class="wrapper" style="text-align: right !important; width: 40%; float:right; margin-right: 8vw; padding: 0; max-height: fit-content;">
+  <div id="chartdiv"></div>
+  </div>
+  <style>
+    #chartdiv {
+    height: 50vh;
+    width: 100%;
+    z-index: -100;
+    font-size: 1.5vh;
+    padding: 0;
+    margin: auto;
+  }
+  </style>
+  
+  <script>
+    
+    var chart = am4core.create("chartdiv", am4charts.RadarChart);
+  
+  chart.data = [{
+  
+  "category": "Displacement - 11,500 tons",
+  "percent": 24
+  }, {
+  "category": "Speed - 32 knots",
+  "percent": 82
+  }, {
+  "category": "Range - 10,000 nautical miles",
+  "percent": 50
+  }, {
+  "category": "Belt Armor - 114 mm",
+  "percent": 26
+  }, {
+  "category": "Length - 187 m",
+  "percent": 30
+  }];
+  
+  /* Create axes */
+  var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+  categoryAxis.dataFields.category = "category";
+  
+  var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+  valueAxis.renderer.axisFills.template.fill = chart.colors.getIndex(2);
+  valueAxis.renderer.axisFills.template.fillOpacity = 0.05;
+  valueAxis.fillOpacity = 0;
+  
+  
+  /* Create and configure series */
+  var series = chart.series.push(new am4charts.RadarSeries());
+  series.dataFields.valueY = "percent";
+  series.dataFields.categoryX = "category";
+  series.name = "Sales";
+  series.strokeWidth = 3;
+  
+  series.tooltipText = "{valueY.formatNumber('')}";
+  
+  </script>
+	<p style="text-align: left; margin: 0 0 0 0; font-size: .69vw"><i>HMS Belfast launch celebration on St. Patrick's Day, 1938</i></p>
+  <p style="text-align: left; margin: 0 0 0 0; font-size: .69vw"><i>Top two images showcase construction of Belfast at Harland and Wolff Shipyard located in Belfast, Northern Ireland</i></p>
+</div>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+	<span class="close">&times;</span>
+	<img class="modal-content" id="img01">
+	<div id="caption"></div>
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById("myModal");
+  
+  // Get the image and insert it inside the modal
+  var img = document.getElementById("belfastImg");
+  var modalImg = document.getElementById("img01");
+
+  img.onclick = function(){
+	modal.style.display = "block";
+	modalImg.src = this.src;
+	captionText.innerHTML = this.alt;
+  }
+  window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() { 
+	modal.style.display = "none";
+  }
+  </script>
+
+<!--second text-->
+<h2 style="margin-top: 12px">First Floor: Economic Warfare, Military Simulations, Global Conflicts</h2>
+<p>
+  After initially playing the role of antagonist to the <i class="qtip tip-top" data-tip="The Home Fleet was a Royal Navy fleet tasked with operations taking part in Great Britain's territorial waters.">Home Fleet's</i> 2nd Cruiser Squadron in fleet exercise Operation <i>Hipper</i>, <i>Belfast</i> took part in the second Blockade of Germany, also known as the Economic War. A joint effort between both the British and French navies, this blockade served to restrict Nazi Germany's, and later Fascist Italy's, supply imports. With Germany's invasion of Poland on the first of September, 1939, the British and French officially declared war on 3 September, and <i>Belfast</i> was ordered to commence hostilities against Germany. Over the course of the next few months, <i>Belfast</i> took part in a number of defensive and offensive operations, but saw little combat. On 10 November, she was assigned to the 2nd Cruiser Squadron as a part of an independent striking force based at Rosyth, Scotland. On 21 November, while sortieing for a gunnery exercise, <i>Belfast</i> struck a magnetic mine while leaving the Firth of Forth, breaking her keel and destroying one of her engine and boiler rooms. The exercise was cancelled, and <i>Belfast</i> was towed to Rosyth for repairs. While the damage did relatively minor damage to <i>Belfast's</i> outer hull, closer assessment revealed that the shock of the mine dealt far greater internal damage. On 4 January 1940, <i>Belfast</i> was decommissioned to Care and Maintenance status and was moved to the British naval base at Devonport in late June. During her repairs, she was given a significant increase in armour plating alongside various other armament enhancements, radar refits, and an <i class="qtip tip-top" data-tip="Type of sonar">echosounder</i>. 
+</p>
+<p>
+  Finally, <i>Belfast</i> was recommissioned in Devonport on 3 November, 1942, and was made the flagship of the 10th Cruiser Squadron. Through the rest of 1942 and most of 1943, she and the rest of the squadron was tasked with escorting Arctic convoys to the Soviet Union; <i>Belfast's</i> new radar suite made her more effective for the task, as she didn't need to rely as much on aerial surveillance. On 23 December 1943, <i>Belfast</i> took part in the Battle of North Cape. During this battle, the Allied forces were split into two groups: Force One consisted of the cruisers <i>Belfast, Norfolk, Sheffield,</i> and an escort of destroyers under <i>Belfast's</i> command. Force Two consisted of the battleship HMS <i>Duke of York,</i> the cruiser <i>Jamaica</i>, and an escort of destroyers. One major threat for the Arctic convoys was the <i class="qtip tip-top" data-tip="The Kriegsmarine was Nazi Germany's navy.">KMS</i> <i>Scharnhorst</i>, a German capital ship. British Admiral Sir Bruce Fraser, with the intention of eliminating <i>Scharnhorst</i>, planned a confrontation with her over Christmas using a convoy of 19 merchant ships, JW 55B, as bait. The plan to draw her out was successful: on 26 December, Fraser received a report that <i>Scharnhorst</i>, along with an escort of five destroyers, was searching for the convoy. Shortly after 9am, <i>Belfast</i> was the first ship to report contact with the <i>Kriegsmarine</i> capital ship - alone, as <i>Scharnhorst</i> had recently detached her destroyers to increase their search area due to the Axis forces believing that they had overshot the convoy. Force One opened fire, hitting <i>Scharnhorst</i> twice while receiving no damage from the return salvo. One of the hits destroyed her radar controls, leaving <i>Scharnhorst</i> effectively blind and forcing her to flee from what she believed to be a battleship. Fraser, predicting that the German ship would attempt to circle around Force One to attack the convoy, moved to cut her off; his prediction was correct: despite <i>Norfolk</i> being damaged and <i>Sheffield</i> having engine problems by the end of the second engagement, the convoy escaped unscathed before <i>Scharnhorst</i> began to flee back to port.
+</p>
+<p>
+  Following this engagement, the lone, outgunned pursuer from Force One, <i>Belfast</i>, managed to keep track of <i>Scharnhorst</i> due to the latter's damaged radar. Thanks to <i>Belfast's</i> constant stream of radar signals, Force Two managed to intercept <i>Scharnhorst</i>. Illuminated by Belfast's <i class="qtip tip-top" data-tip="Explosive projectiles shot up into the air before bursting; a type of flare.">star shells</i>, the <i>Kriegsmarine</i> ship was hit by <i>Duke of York's</i> salvos, destroying her front turrets and her aeroplane hangar. <i>Scharnhorst</i> turned to flee, but was cut off by <i>Belfast,</i> the reengaging <i>Norfolk,</i> and <i>Jamaica.</i> Despite this, the increasingly desperate <i>Scharnhorst</i> managed to hit <i>Duke of York</i> with a salvo, damaging her radar. This grain of luck would signal the beginning of the end for <i>Scharnhorst</i>, however; another of the <i>Duke of York's</i> salvos destroyed one of her boiler rooms, plummeting her speed and allowing the Allied destroyers to enter torpedo range. Although she was able to score a few hits on the destroyers, <i>Scharnhorst</i> had reached the end of the line long ago. Subjected to a deluge of shells and torpedoes, she capsized and sunk at 19:45 on December 26th. Following the battle, <i>Belfast</i> resumed her Arctic convoy escord duties before carrying King George VI on 8 May 1944 during his visit to the Home Fleet preceding the invasion of Normandy. She would later take part in the invasion, firing 1,996 rounds from her six-inch guns in only five weeks. In April 1945, <i>Belfast</i> received a refit to prepare her for service against Japan. She was made flagship of the 2nd Cruiser Squadron of the British Pacific Fleet and was expected to participate in Operation Downfall, but the Japanese surrender on 15 August, 1945, forestalled this. 
+</p>
+
+<div class="belfastDiv" style="text-align: center; width: 95%">
+	<img src="images/Belfast2.jpg" id="belfastImg2" alt="HMS Belfast in Sydney, August 1945" width="40%" height="auto">
+	<p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>HMS Belfast in Sydney in August 1945, probably shortly before the Japanese surrender</i></p>
+  <p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>Belfast docked in Sydney for a short time starting on August 7th for a second, quick, post-Normandy refit</i></p>
+</div>
+
+<!--Modal 2-->
+
+<div id="myModal2" class="modal">
+	<span class="close">&times;</span>
+	<img class="modal-content" id="img02" style="height: 95%; width: auto">
+	<div id="caption2"></div>
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById("myModal2");
+  
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var img = document.getElementById("belfastImg2");
+  var modalImg = document.getElementById("img02");
+
+  img.onclick = function(){
+	modal.style.display = "block";
+	modalImg.src = this.src;
+	captionText.innerHTML = this.alt;
+  }
+  window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() { 
+	modal.style.display = "none";
+  }
+  </script>
+<br>
+<h2 style="margin-top: 12px">Town-class's Legacy</h2>
+<p>
+  Of the ten Town-class cruisers commissioned from 1937 to 1939, only four of them, including <i>Belfast's</i> sister ship <i>Edinburgh,</i> were destroyed in the Second World War. The other five served short postwar careers before eventually being broken up in the 1950s and 1960s. As for <i>Belfast</i> herself, she paid off into the reserve fleet in 1947, undergoing refits in Portsmouth, England, before being recommissioned in September, 1948. In January, 1950, North Korean forces crossed the 38th Parallel, starting the Korean War. This led to <i>Belfast</i> serving in the United Nations naval forces, giving her a short career in the US Navy's Task Force 77, before being detached to operate independently. For a short period starting on 19 July 1950, <i>Belfast, </i>alongside the light cruiser USS <i>Juneau,</i> supported allied forces around Yodŏk county before sailing to Britain for another refit. In 1951, she took part in a variety of coastal patrols and provided artillery support for allied forces alongside the Korean Peninsula. Continuing these duties in 1952, <i>Belfast</i> received her first structural damage since the mine incident in 1939. While engaging an artillery battery at the Wolsa-ri island, a 75mm shell struck a forward compartment, killing one sailor and wounding four others. This marked the end of her Korean service, as she was relieved by two other Town-class cruisers, <i>Newcastle</i> and <i>Birmingham.</i> <i>Belfast</i> returned to the United Kingdom and entered reserve on 1 December, 1952.
+</p>
+<p>
+  In 1955, the decision was made that <i>Belfast</i> was to be modernised. Following a long refit, she was recommissioned on 12 May, 1959. For the next few years, she took part in a variety of foreign and home exercises, but peaceful times saw her repeatedly decommissioned and recommissioned. In the end, she returned to Devonport in 1963 for a refit that would prepare her for the reserves. In 1967 and 1968, the Imperial War Museum, National Maritime Museum, and Ministry of Defense pondered the possibility of preserving an entire ship for historical value; the possibility of saving <i>Belfast</i> was logically and economically practical. However, in 1971, Her Majesty's Paymaster General decided against preservation, leaving <i>Belfast</i> awaiting the day she would join her scrapped sisters.
+</p>
+<div class="belfastDiv" style="text-align: center; width: 95%">
+	<img src="images/Belfast3.jpg" id="belfastImg3" alt="Belfast Berthed in London, Unforgotten" width="40%" height="auto">
+	<p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>HMS Belfast at her London berth circa 2013</i></p>
+  <p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>Sporting Admiralty's Disruptive Camouflage</i></p>
+</div>
+
+<div id="myModal3" class="modal">
+	<span class="close">&times;</span>
+	<img class="modal-content" id="img03" style="height: 95%; width: auto">
+	<div id="caption3"></div>
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById("myModal3");
+  
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var img = document.getElementById("belfastImg3");
+  var modalImg = document.getElementById("img03");
+
+  img.onclick = function(){
+	modal.style.display = "block";
+	modalImg.src = this.src;
+	captionText.innerHTML = this.alt;
+  }
+  window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() { 
+	modal.style.display = "none";
+  }
+  </script>
+<h2>No End for <i>Belfast</i></h2>
+<p>
+  Following the government's refusal to preserve <i>Belfast,</i> Rear-Admiral Sir Morgan Morgan-Giles, captain of the <i>Belfast</i> from January 1961 to July 1962, established a private trust - the <i>Belfast</i> Trust - to campaign for the cruiser's preservation. Morgan-Giles addressed the House of Commons on 8 March 1971, stating that saving her for the nation would be a "case of grasping the last opportunity". Among those who spoke in favour of Morgan-Giles was Gordon Bagier, one of <i>Belfast's</i> gunners who took part in both the Battle of North Cape and the invasion of Normandy. Peter Kirk, Under-secretary for the Navy and representative of the government, agreed that <i>Belfast</i> held tremendous historical value and delayed her scrapping until the Trust could put forward a formal proposal. The Trust bore fruit: in July 1971, the government handed <i>Belfast</i> over to the Trustees. After being being towed to London, she was refitted as a museum ship. She was opened to the public on 21 October, 1971 as the first naval vessel preserved for the nation in almost <i class="qtip tip-top" data-tip="The HMS Victory was launched in 1765 and served as Lord Nelson's flagship in 1805; she still serves as a museum ship in England.">two centuries</i>.
+</p>
+<p>
+  <i>Belfast</i> still remains berched in London to this day. Not only does she serve as a testament to the strength of the Town-class cruisers, but her actions during the Battle of North Cape paint her as a symbol representing the might and bravery of the Royal Navy itself. Preservation is important, both in a negative and a positive light: it can serve as a reminder of the mistakes of the past, telling people to learn from them as to not repeat them. It also serves to honor the soldiers who would otherwise be forgotten; <i>Belfast's</i> and her squadron's actions against <i>Scharnhorst</i> saved the lives of hundreds of mariners aboard merchant ships and destroyer escorts. Her duties during the invasion of Normandy helped save the lives of thousands storming the beach to bring about a quicker end to a War already too bloody from too many years of death. <i>Belfast</i> remains preserved in Britain because she is a machine designed not to bring about destruction in other countries, but to protect her own.
+</p>
+
+</body>
+</html>

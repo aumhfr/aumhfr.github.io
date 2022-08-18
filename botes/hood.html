@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="stylesheet/styles.css">
+	<title>HMS Hood</title>
+<style>
+.topnav a.active {
+background-color: #a3a109;
+color: white;
+}
+.topnav a.active:hover{
+  box-shadow: 0 0 6px 6px #a3a109;
+  transition: 0.15s;
+}
+.hoodDiv{
+	padding-top: 10px;
+	position: relative;
+  width: 20vw;
+}
+</style>
+</head>
+<body>
+	<!--Navbar-->
+  <div class="topnav" id = "navBar">
+    <a href="../index.html"class="bagel" id="home">Home</a>
+    <div class="dropdown">
+        <button class="dropbtn" id="bagel">United States Navy</button>
+        <div class="dropdown-content">
+          <a href="washington.html" class="bagel">Washington</a>
+          <a href="enterprise.html" class="bagel">Enterprise</a>
+          <a href="san_francisco.html" class="bagel">San Francisco</a>
+        </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn" id="tostido">British Royal Navy</button>
+      <div class="dropdown-content">
+          <a href="belfast.html" class="tostido">Belfast</a>
+          <a href="hood.html" class="active"><b>Hood</b></a>
+          <a href="ark_royal.html" class="tostido">Ark Royal</a>
+      </div>
+  </div>
+  <div class="dropdown">
+      <button class="dropbtn" id="potato">Imperial Japanese Navy</button>
+      <div class="dropdown-content">
+          <a href="yamato.html" class="potato">Yamato</a>
+          <a href="sho-zui.html"class="potato">Shōkaku and Zuikaku</a>
+          <a href="ayanami.html"class="potato">Ayanami</a>
+      </div>
+  </div>
+  <div class="dropdown">
+      <button class="dropbtn" id="sourpatch">German <i>Kriegsmarine</i></button>
+      <div class="dropdown-content">
+          <a href="bismarck.html"class="sourpatch">Bismarck</a>
+          <a href="u-47.html"class="sourpatch">U-47</a>
+          <a href="prinz_eugen.html"class="sourpatch">Prinz Eugen</a>
+      </div>
+  </div>
+  <a href="minesweeper game/minesweeper.html"class="sourpatch" id="battleship" style="float: right">Play Minesweeper</a>
+  </div>
+<!--introductory text-->
+<h2 style="margin-top: 12px">Mightiest Median: HMS <i>Hood</i></h2>
+<p>
+  The HMS <i>Hood</i> was laid down on the first of September, 1916, as the first of four planned Admiral-class battlecruisers to be built during the First World War. Despite this, a number of design flaws caused her to go through multiple design revisions leading to the cancellation of the other three Admiral-class ships and <i>Hood</i> herself not being commissioned until May, 1920 - two years after the War had ended. Designed to provide a counter to the German <i>Mackensen</i>-class battlecruiser, <i>Hood's</i> final design implemented armour heavier than what was originally planned, increasing her <i class="qtip tip-top" data-tip="Draught or draft refers to the depth of water necessary to keep a ship afloat.">draught</i> to 9.8 metres and bringing the waterline alarmingly close to her deck. Because of this, on particularly rough voyages, water would occasionally flow into <i>Hood's</i> eating areas via her ventilation shafts. This led to her being called "the largest submarine in the Navy" and was blamed for an increased number of cases of tuberculosis amongst the crew.
+</p>
+<br>
+<!--Image-->
+<div class="hoodDiv" style=" margin-left: 5%; width: 95%">
+	<img src="images/Hood.jpg" id="hoodImg" alt="HMS Hood" style="text-align: left" width="40%" height="auto">
+  <script src="http://cdn.amcharts.com/lib/4/core.js"></script>
+  <script src="http://cdn.amcharts.com/lib/4/charts.js"></script>
+  <div class="wrapper" style="text-align: right !important; width: 40%; float:right; margin-right: 8vw; padding: 0; max-height: fit-content;">
+  <div id="chartdiv"></div>
+  </div>
+  <style>
+    #chartdiv {
+    height: 50vh;
+    width: 100%;
+    z-index: -100;
+    font-size: 1.5vh;
+    padding: 0;
+    margin: auto;
+  }
+  </style>
+  
+  <script>
+    
+    var chart = am4core.create("chartdiv", am4charts.RadarChart);
+  
+  chart.data = [{
+  
+  "category": "Displacement - 46,680 tons",
+  "percent": 99
+  }, {
+  "category": "Speed (1941) - 30 knots",
+  "percent": 52
+  }, {
+  "category": "Range (1931) - 5,300 nautical miles",
+  "percent": 5
+  }, {
+  "category": "Belt Armor - 152-305 mm",
+  "percent": 60
+  }, {
+  "category": "Length - 262.3 m",
+  "percent": 86
+  }];
+  
+  /* Create axes */
+  var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+  categoryAxis.dataFields.category = "category";
+  
+  var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+  valueAxis.renderer.axisFills.template.fill = chart.colors.getIndex(2);
+  valueAxis.renderer.axisFills.template.fillOpacity = 0.05;
+  valueAxis.fillOpacity = 0;
+  
+  
+  /* Create and configure series */
+  var series = chart.series.push(new am4charts.RadarSeries());
+  series.dataFields.valueY = "percent";
+  series.dataFields.categoryX = "category";
+  series.name = "Sales";
+  series.strokeWidth = 3;
+  
+  series.tooltipText = "{valueY.formatNumber('')}";
+  
+  </script>
+	<p style="text-align: left; margin: 0 0 0 0; font-size: .69vw"><i>HMS Hood under construction in the fitting-out basin, 1919<br>Located at John Brown & Company, Ltd. shipyard in Clydebank, Scotland</i></p>
+</div>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+	<span class="close">&times;</span>
+	<img class="modal-content" id="img01">
+	<div id="caption"></div>
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById("myModal");
+  
+  // Get the image and insert it inside the modal
+  var img = document.getElementById("hoodImg");
+  var modalImg = document.getElementById("img01");
+
+  img.onclick = function(){
+	modal.style.display = "block";
+	modalImg.src = this.src;
+	captionText.innerHTML = this.alt;
+  }
+  window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() { 
+	modal.style.display = "none";
+  }
+  </script>
+
+<!--second text-->
+<h2 style="margin-top: 12px">Interwar Service and Second World War</h2>
+<p>
+ Despite her completion after the end of the First World War, <i>Hood</i>, upon her commissioning, became the flagship of the Royal Navy's Battlecruiser Squadron in the Atlantic Fleet. In November of 1923, the squadron set out across the world on a mission to visit a handful of the British Empire's dominions via the Panama Canal in an effort to remind them that the Royal Navy would support them should the need arise - and to subtly nudge these dominions to support them in the future. The squadron returned home in September of 1924 after having visited larger countries including South Africa, Australia, India, The United States, and many other British colonies and dependencies. <i>Hood</i> was given a major refit from 1929 to 1931 mostly focusing on her armour and anti-aircraft batteries before returning to her duties as flagship of the battlecruiser squadron. By the mid 1930s, her near-constant active service demanded another major refit, and she was due for a modernisation in 1941. Due to the outbreak of the Second World War, however, <i>Hood's</i> removal from active service was nigh impossible, and as a result, she became subject to deterioration.
+</p>
+<p>
+ After the outbreak of war, <i>Hood</i> immediately found herself on the front lines. In late-September 1939, she and the <i class="qtip tip-top" data-tip="The Home Fleet was a Royal Navy fleet tasked with operations taking part in Great Britain's territorial waters.">British Home Fleet</i> sortied into the central North Sea to provide cover for <i>Spearfish</i>, a damaged submarine fleeing from German warships. <i>Spearfish</i> managed to escape for repairs, but two German bomber wings - KG 26 and KG 30 - spotted the Home Fleet and hit <i>Hood</i> with a 250kg bomb. After this, she was finally allowed to rest for a quick refit between 4 April and 12 June. Following her repairs, <i>Hood</i> took command of Force H at Gibraltar and participated in the destruction of the French fleet at Mers-el-Kébir for the main objective of 1940's Operation Catapult. This attack, resulting from France signing armistices with Germany and Italy, severed diplomatic relations between France and the United Kingdom after the two countries had fought against the Germans side-by-side during that very same year. A collaborative government in southern France called Vichy France, resentful from the act of betrayal, slowly began to drift towards becoming an Axis power. Soon, France was split between Vichy France and <i>La Résistance</i>, the French Resistance who fought against the Nazi occupation in their country. In January 1941, <i>Hood</i> returned home for repairs, but the threat of German capital ships demanded she return to active service in March, still in very poor condition. When the <i class="qtip tip-top" data-tip="The Admiralty was a department of the British government responsible for commanding the Royal Navy until it was dissolved in 1964.">British Admiralty</i> received a report that the first <i>Bismarck</i>-class battleship - <i class="qtip tip-top" data-tip="The Kriegsmarine was Nazi Germany's navy.">KMS</i> <i>Bismarck</i> - sailed from Germany in mid-April, <i>Hood</i> departed for the Norwegian Sea. It would later come to light that the report on <i>Bismarck</i> was false, and <i>Hood</i> began to patrol the Atlantic.
+</p>
+
+<div class="hoodDiv" style="text-align: center; width: 95%">
+	<img src="images/Hood2.jpg" id="hoodImg2" alt="Last Photograph of HMS Hood" width="40%" height="auto">
+	<p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>HMS Hood going into action against Bismarck and Prinz Eugen, 24 May 1941</i></p>
+  <p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>Last Photograph taken of HMS Hood (Background) from Prince of Wales</i></p>
+</div>
+
+<!--Modal 2-->
+
+<div id="myModal2" class="modal">
+	<span class="close">&times;</span>
+	<img class="modal-content" id="img02" style="height: 95%; width: auto">
+	<div id="caption2"></div>
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById("myModal2");
+  
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var img = document.getElementById("hoodImg2");
+  var modalImg = document.getElementById("img02");
+
+  img.onclick = function(){
+	modal.style.display = "block";
+	modalImg.src = this.src;
+	captionText.innerHTML = this.alt;
+  }
+  window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() { 
+	modal.style.display = "none";
+  }
+  </script>
+<br>
+<h2 style="margin-top: 12px">End of <i>Hood</i></h2>
+<p>
+ In May 1941, <i>Hood</i> and the recently-commissioned battleship <i>Prince of Wales</i>, along with several other groups of ships, were sent in pursuit of the <i>Bismarck</i> and her heavy cruiser companion, <i>Prinz Eugen</i>. On 24 May 1941, <i>Hood</i> and <i>Prince of Wales</i> intercepted <i>Bismarck</i> in the Denmark Strait between Greenland and Iceland, although the Germans were already aware of them due to <i>Prinz Eugen's</i> <i class="qtip tip-top" data-tip="A series of underwater microphones that picked up the sounds of a ship's propellers.">hydrophone array.</i> The British opened fire shortly after dawn, focusing primarily on <i>Prinz Eugen</i>. The German ships returned fire, focusing on <i>Hood</i>. <i>Hood</i> was the first ship hit, with a shell igniting a fire on her boat deck amongst her ready-to-use anti-aircraft ammunition and rockets for her <i class="qtip tip-top" data-tip="The unrotated projectile was a rocket designed for anti-aircraft and ground bombardment usage, although it was proven to be unreliable and was withdrawn in 1941.">UP mounts</i>. Turning to port to use her rear turrets, <i>Hood</i> suffered more damage as she caught a full salvo from <i>Bismarck</i>. A series of explosions began to devastate <i>Hood</i>, destroying the aft portion of her hull and forcing her to sink immediately. <i>Hood's</i> bow, pointing skyward almost vertically, was submerged in only three minutes. Of the 1,418 men stationed aboard <i>Hood</i>, only three survived: Ordinary Signalman Ted Briggs, Able Seaman Robert Tilburn, and Midshipman William John Dundas, all of whom were rescued by the destroyer HMS <i>Electra</i> about two hours after <i>Hood</i> sunk. Immediately following <i>Hood's</i> destruction, however, <i>Prince of Wales</i> was forced to disengage after taking substantial damage from the German ships, but not before <i>Bismarck</i> suffered some hits of her own. After the battle, <i>Bismarck</i> and <i>Prinz Eugen</i> disbanded, with the latter continuing her initial task of attacking Atlantic convoys while <i>Bismarck</i> made for France for repairs.
+</p>
+<p>
+ The HMS <i>Hood</i> stood as a symbol of the resilience and passion of the Royal Navy, continuing to fight on despite her desperate need for a refit. In 2001, shipwreck hunter David Mearns and his company, Blue Water Recoveries, was commissioned by British Broadcaster Channel 4 to locate and take footage of <i>Hood</i> and <i>Bismarck</i> for a documentary that was to air on the 60th anniversary of the battle between the two. Mearns, along with the support of the Royal Navy, the HMS <i>Hood</i> Association, and Ted Briggs, was able to record footage of <i>Bismarck</i> before finding <i>Hood's</i> resting place about 2,800 metres under the sea split into two large debris fields. The rudder, still intact, retains its final order of a 20° port turn for the unveiling of <i>Hood's</i> rear turrets against <i>Bismarck</i>. In 2002, the site was officially designated as a war grave for the British government. In 2012, the government gave Mearns permission to return to the <i>Hood's</i> wreck to retrieve one of her ship's bells. Unfortunately, due to unfavorable weather conditions, the expedition was abandoned after ten days. In 2015, however, the same team returned for yet another attempt to retrieve the bell; this time, they would succeed. On 24 May 2016, Princess Anne, the British Princess Royal, unveiled the bell for the 75th anniversary of the Battle of the Denmark Strait. The bell was rung eight times by descendants of the late crew members in a commemoration before being placed in the National Museum of the Royal Navy.
+</p>
+</body>
+</html>

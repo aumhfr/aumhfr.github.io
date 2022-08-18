@@ -1,0 +1,55 @@
+.smallgrid{
+  max-height: 23em;
+  max-width: 23em;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: black;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  box-shadow: 0 0 6px 8px green;
+  color: rgb(7, 190, 7);
+  text-align: center;
+  padding: 10px;
+  overflow-x: auto;
+  overflow-x: auto
+}
+.smallgrid div {
+  height: 2.1em;
+  width: 2.1em;
+  border: .1em solid green;
+}
+.mine {
+  background-color: black;
+}
+.clicked {
+  background-color: rgb(64, 64, 64);
+}
+
+#text {
+  margin-left: auto;
+  right: 5%;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  height: 23em;
+  width: 23em;
+  background-color: black;
+  box-shadow: 0 0 6px 8px green;
+  color: rgb(7, 190, 7);
+  flex-wrap: wrap;
+  font-size: 1em;
+  padding: 10px;
+}
+#reset {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  transform: translateY(150%);
+  height: 32px;
+  width: 32px
+}

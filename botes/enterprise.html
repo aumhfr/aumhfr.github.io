@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="stylesheet/styles.css">
+	<title>USS Enterprise CV-6</title>
+<style>
+.topnav a.active {
+background-color: #326996;
+color: white;
+}
+.topnav a.active:hover{
+  box-shadow: 0 0 6px 6px #326996;
+  transition: 0.15s;
+}
+.entyDiv{
+	padding-top: 10px;
+	position: relative;
+  width: 20vw;
+}
+</style>
+</head>
+<body>
+	<!--Navbar-->
+  <div class="topnav" id = "navBar">
+    <a href="../index.html"class="bagel" id="home">Home</a>
+    <div class="dropdown">
+        <button class="dropbtn" id="bagel">United States Navy</button>
+        <div class="dropdown-content">
+          <a href="washington.html" class="bagel">Washington</a>
+          <a href="enterprise.html" class="active"><b>Enterprise</b></a>
+          <a href="san_francisco.html" class="bagel">San Francisco</a>
+        </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn" id="tostido">British Royal Navy</button>
+      <div class="dropdown-content">
+          <a href="belfast.html" class="tostido">Belfast</a>
+          <a href="hood.html" class="tostido">Hood</a>
+          <a href="ark_royal.html" class="tostido">Ark Royal</a>
+      </div>
+  </div>
+  <div class="dropdown">
+      <button class="dropbtn" id="potato">Imperial Japanese Navy</button>
+      <div class="dropdown-content">
+          <a href="yamato.html" class="potato">Yamato</a>
+          <a href="sho-zui.html"class="potato">Shōkaku and Zuikaku</a>
+          <a href="ayanami.html"class="potato">Ayanami</a>
+      </div>
+  </div>
+  <div class="dropdown">
+      <button class="dropbtn" id="sourpatch">German <i>Kriegsmarine</i></button>
+      <div class="dropdown-content">
+          <a href="bismarck.html"class="sourpatch">Bismarck</a>
+          <a href="u-47.html"class="sourpatch">U-47</a>
+          <a href="prinz_eugen.html"class="sourpatch">Prinz Eugen</a>
+      </div>
+  </div>
+  <a href="minesweeper game/minesweeper.html"class="sourpatch" id="battleship" style="float: right">Play Minesweeper</a>
+  </div>
+  
+</div>
+<h2 style="margin-top: 12px">Legend of the Pacific: <i>Enterprise</i> CV-6</h2>
+<p>The USS <i>Enterprise</i> was the second of three <i class="qtip tip-top" data-tip="Consisted of Yorktown CV-5, Enterprise CV-6, and Hornet CV-8."><i>Yorktown-</i>class</i> aircraft carriers laid down in the 1930s. She was the seventh vessel to bear her namesake, with the first USS <i>Enterprise</i> commissioned as a 70-ton sloop in 1775. <i>Enterprise</i> was launched on 3 October 1936 at Newport News Shipbuilding in Virginia and was one of few ships to be equipped with the CXAM-1 radar, the US Navy's first production radar, allowing it to detect enemy naval vessels from long distances. She was commissioned in mid-May of 1938 as a part of Task Force 8 and set course for Rio de Janeiro for her <i class="qtip tip-top" data-tip="When a ship's performance is tested before she officially joins the service or after a major retrofit or crew change.">shakedown cruise</i> before performing fleet exercises with <i>Yorktown.</i> <i>Enterprise</i> joined the Pacific Fleet in April 1939 after being reassigned from duties in the East Coast, and she would experience her first spot in the limelight when being used for the filming of the 1941 aviation flick <i>Dive Bomber</i> while in San Diego, California, before being ordered to Pearl Harbor later in 1941.</p>
+<br>
+<!--Image-->
+<div class="entyDiv" style=" margin-left: 5%; width: 95%">
+	<img src="images/Enterprise.jpg" id="entyImg" alt="USS Enterprise, CV-6" style="text-align: left" width="40%" height="auto">
+  <script src="http://cdn.amcharts.com/lib/4/core.js"></script>
+  <script src="http://cdn.amcharts.com/lib/4/charts.js"></script>
+  <div class="wrapper" style="text-align: right !important; width: 40%; float:right; margin-right: 8vw; padding: 0; max-height: fit-content;">
+  <div id="chartdiv"></div>
+  </div>
+  <style>
+    #chartdiv {
+    height: 50vh;
+    width: 100%;
+    z-index: -100;
+    font-size: 1.5vh;
+    padding: 0;
+    margin: auto;
+  }
+  </style>
+  
+  <script>
+    
+    var chart = am4core.create("chartdiv", am4charts.RadarChart);
+  
+  chart.data = [{
+  
+  "category": "Displacement - 19,800 tons",
+  "percent": 57
+  }, {
+  "category": "Speed - 32.5 knots",
+  "percent": 85
+  }, {
+  "category": "Range - 12,500 nautical miles",
+  "percent": 66
+  }, {
+  "category": "Belt Armor - 2.5-4 in.",
+  "percent": 19
+  }, {
+  "category": "Length - 761 ft.",
+  "percent": 54
+  }];
+  
+  /* Create axes */
+  var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+  categoryAxis.dataFields.category = "category";
+  
+  var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+  valueAxis.renderer.axisFills.template.fill = chart.colors.getIndex(2);
+  valueAxis.renderer.axisFills.template.fillOpacity = 0.05;
+  valueAxis.fillOpacity = 0;
+  
+  
+  /* Create and configure series */
+  var series = chart.series.push(new am4charts.RadarSeries());
+  series.dataFields.valueY = "percent";
+  series.dataFields.categoryX = "category";
+  series.name = "Sales";
+  series.strokeWidth = 3;
+  
+  series.tooltipText = "{valueY.formatNumber('')}";
+  
+  </script>
+  
+
+	<p style="text-align: left; margin: 0 0 0 0; font-size: .69vw"><i>Aerial view of USS Enterprise (CV-6) at sea in January 1940.<br>During this period, "EN" was painted on the flight deck to facilitate identification of the ship from the air.<br>Item part of a scrapbook assembled by CDR William H. Balden, USNR, documenting his World War II service.</i></p>
+	<p style="text-align: left; margin: 0 0 0 0; font-size: .69vw"><i>National Naval Aviation Museum, photo #2007.084.001.510.</i></p>
+  
+</div>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+	<span class="close">&times;</span>
+	<img class="modal-content" id="img01">
+	<div id="caption"></div>
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById("myModal");
+  
+  // Get the image and insert it inside the modal
+  var img = document.getElementById("entyImg");
+  var modalImg = document.getElementById("img01");
+
+  img.onclick = function(){
+	modal.style.display = "block";
+	modalImg.src = this.src;
+	captionText.innerHTML = this.alt;
+  }
+  window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() { 
+	modal.style.display = "none";
+  }
+  </script>
+
+<!--second text-->
+<h2 style="margin-top: 12px">The Indomitable Grey Ghost Enters the Fray</h2>
+<p>
+On December 7 1941, the Imperial Japanese Navy launched a surprise attack on the American naval base at Pearl Harbor, despite the US's official neutrality at the time. This battle is where <i>Enterprise</i> first partook in combat, although she was still at sea following an operation on the day of the attack; after losing a scouting squadron to both enemy and friendly anti-aircraft fire amidst overwhelming confusion, she received radio messages from Pearl Harbor reporting that the base was being attacked. After losing more fighters to friendly fire while searching for a Japanese carrier, <i>Enterprise</i> docked at Pearl Harbor for emergency fuel and supplies on the day following the attack. Although this process normally took 24 hours, the commander of Carrier Division 2, Vice-Admiral William Halsey Jr., ordered everyone able to help with the process. The task was completed in 7 hours. <i>Enterprise</i> sailed out the next morning to patrol for any enemy ships, and two of her Douglas SBD-2 Dauntless aircraft managed to bomb and sink the submarine <i>I-70.</i> With war finally being declared between the United States and its opposing Axis factions, <i>Enterprise</i> would experience many more battles throughout the beginning of the 1940s.
+</p>
+
+<p>
+On February 1 1942, <i>Enterprise</i> and the rest of her Task Force raided the Marshall Islands, sinking and damaging numerous Japanese auxiliary ships and inflicting detrimental damage to enemy aircraft and ground facilities. Although there was a counterattack, its significance was minor, as Task Force 8 retired back to Pearl Harbor shortly after the raid, their mission accomplished. On 26 May 1942, <i>Enterprise</i> returned to Pearl Harbor to prepare for the Japanese attack at Midway Island, which would prove to be one of the most decisive naval battles in the war. During this conflict, <i>Enterprise</i> provided a major role in the Allies' success, sinking the aircraft carriers <i>Akagi, Kaga</i>, and <i>Hiryū</i>, alongside the heavy cruiser <i>Mikuma.</i> This battle, while a major victory for the American faction, saw the end of <i>Enterprise's</i> older sister, <i>Yorktown</i>. During the Japanese counterattack prior to her destruction, the carrier <i class="qtip tip-top" data-tip="Imperial Japanese Navy">IJN</i> <i>Hiryū</i> launched two waves of bombers that resulted in the destruction of <i>Yorktown.</i> Despite the losses of her sister and many of her aircraft squadrons, <i>Enterprise</i> herself returned from battle to Pearl Harbor completely intact on 13 June 1942.
+</p>
+
+
+<div class="entyDiv" style="text-align: center; width: 95%">
+	<img src="images/Enterprise2.jpg" id="entyImg2" alt="Devastators on Enterprise's Deck" width="40%" height="auto">
+	<p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>Array of Douglas TBD Devastator bombers atop Enterprise during the the Battle of Midway</i></p>
+</div>
+
+<!--Modal 2-->
+
+<div id="myModal2" class="modal">
+	<span class="close">&times;</span>
+	<img class="modal-content" id="img02" style="height: 95%; width: auto">
+	<div id="caption2"></div>
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById("myModal2");
+  
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var img = document.getElementById("entyImg2");
+  var modalImg = document.getElementById("img02");
+
+  img.onclick = function(){
+	modal.style.display = "block";
+	modalImg.src = this.src;
+	captionText.innerHTML = this.alt;
+  }
+  window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() { 
+	modal.style.display = "none";
+  }
+  </script>
+<br>
+<p>
+The following months saw <i>Enterprise</i> engage in a multitude of conflicts, such as the Battle of the Eastern Solomons, in which she was struck by multiple armor-piercing and land-based bombs, damaging her significantly. Even surrounded by promises of defeat, <i>Enterprise's</i> repair crew repair crew saw to it that she was able to return to port on her own power. Between 25 and 27 October 1942, she took part in the Battle of the Santa Cruz Islands alongside her younger sister, <i>Hornet</i>. During this battle, a strike wave of dozens of Japanese bombers and <i class="qtip tip-top" data-tip="A suicide bombing tactic employed by Japanese aviators in which they would crash their planes into Allied ships."><i>kamikaze</i></i> pilots struck <i>Hornet</i>, crippling her. Despite these attacks, the following airstrikes from the Japanese carriers <i>Jun'yō</i> and <i>Zuikaku</i> that struck with torpedoes and armor-piercing bombs, and an Allied attempt to scuttle Hornet with torpedos and over 400 shells, <i>Hornet</i> still remained afloat until the Japanese fleet arrived at her location and sunk her with torpedos. This loss left <i>Enterprise</i> as the only remaining Allied carrier in the Pacific theater, with her crew posting a sign on the flight deck that said "Enterprise vs Japan." Though still damaged from the battle, <i>Enterprise</i> returned to aid in the Naval Battle of Guatalcanal after an incomplete repair job at New Caledonia and provided a pivotal role in the remainder of the Campaign, sinking or assisting in sinking over a dozen Japanese warships and troop transports, eventually leading to the Axis country's retreat from the Santa Cruz Islands.
+</p>
+<p>
+  In the summer of 1943, the American Pacific Fleet was reinforced by two new carrier classes: <i>Essex</i> and <i>Independence</i>. During this time, <i>Enterprise</i> docked at the Puget Sound Naval Shipyard for a major (and very much needed) overhaul. The process took several months, with <i>Enterprise</i> returning to Pearl Harbor on 6 November 1943. Now donning the iconic "6"s on her flight deck and numerous weapon and armor upgrades, she provided aid in multiple small-scale conflicts. <i>Enterprise's</i> next major engagement was her part in the Battle of the Philippine Sea, the largest carrier-against-carrier battle in history, with over 1,300 aircraft taking part in the battle. While 130 American planes were lost, The results were comparatively catastrophic for the Imperial Japanese Navy. Carriers <i>Hiyō, Shōkaku,</i> and <i>Taihō</i> were sunk alongside over 400 Japanese aircraft. These losses would prove to be detrimental for the Japanese war effort, as the lack of air superiority remained with them throughout the end of the War. Until late 1945, the <i class="qtip tip-top" data-tip="Enterprise was reported to be sunk on three different occasions during the War, inspiring the nickname Grey Ghost.">Grey Ghost</i> took part in almost every naval action over the course of the Pacific War and received her final wound at Okinawa on 14 May, 1945, when a <i>kamikaze</i> Zero struck her forward elevator. After returning to Puget Sound, <i>Enterprise</i> was ready to get back into the conflict when Hiroshima and Nagasaki were bombed, ending the war.
+</p>
+<div class="entyDiv" style="text-align: center; width: 95%">
+	<img src="images/Enterprise3.jpg" id="entyImg3" alt="Enterprise post-retrofit" width="40%" height="auto">
+	<p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>USS Enterprise (CV-6) underway off Pearl Harbor, Hawaii, on 2 August 1944.</i></p>
+  <p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>Painted in Camouflage Measure 33 Design 4Ab.</i></p>
+</div>
+
+<!--Modal 3-->
+<!--Modal 2-->
+
+<div id="myModal3" class="modal">
+	<span class="close">&times;</span>
+	<img class="modal-content" id="img03" style="height: 95%; width: auto">
+	<div id="caption3"></div>
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById("myModal3");
+  
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var img = document.getElementById("entyImg3");
+  var modalImg = document.getElementById("img03");
+
+  img.onclick = function(){
+	modal.style.display = "block";
+	modalImg.src = this.src;
+	captionText.innerHTML = this.alt;
+  }
+  window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() { 
+	modal.style.display = "none";
+  }
+  </script>
+
+<h2>End of Lucky E</h2>
+<p>
+  The USS <i>Enterprise</i> returned to Pearl Harbor before discharging her servicemen and partipating in <i class="qtip tip-top" data-tip="A ferry system with the goal of bringing over eight million American servicement overseas back home.">Operation Magic Carpet</i> as her final service to her country. As larger and more advanced carriers entered the US Navy closer to 1945, <i>Enterprise</i> was deemed surplus, being deactivated in 1946 and decommissioned in 1947 at the New York Naval Shipyard. Although plans in 1946 would have her remain in New York as a permanent museum or memorial, these plans never reached the funding required. In 1958, <i>Enterprise</i> was sold to the Lipsett Corporation to be scrapped in New Jersey. As of 1960, all that remains of the <i>Yorktown</i> class is <i>Enterprise's</i> ship bell, which remains at the US Naval Academy in Annapolis, Maryland, and is traditionally rung after midshipmen victories over West Point, her one-ton nameplate, taken from her stern, which resides near a Little League park in River Vale, New Jersey, and one of her anchors, which remains on display at the Washington Navy Yard. The name <i>Enterprise</i> remains eternal, however; in February 1958, it was revived for the world's first nuclear-powered aircraft carrier, <i>Enterprise</i> CVN-65. CVN-65 served for 51 years before being removed from service on 1 December 2012. Finally, the next <i>Enterprise, </i> a Gerald R. Ford-class aircraft carrier, CVN-80, is scheduled to be operational by 2028.
+</p>
+<p>
+  <i>Enterprise</i> CV-6 was the most decorated naval vessel of World War 2, receiving a Presidental Unit Citation, a Navy Unit Commendation, a British Admiralty pennant, and twenty battle stars. Her guns and planes downed over 900 enemy aircraft, sank 71 ships, and damaged 192 more. Of over twenty major actions over the course of the Pacific War, <i>Enterprise</i> took part in all but two. Of all of the aircraft carriers commissioned before the War, she was one of only <i class="qtip tip-top" data-tip="Saratoga CV-3 and Ranger CV-4 also survived the entirety of the War.">three</i> to survive every conflict. Her perceived invincibility led to her donning a number of nicknames, such as The Big E, Lucky E, and Grey Ghost. In the midst of war, <i>Enterprise's</i> presence alone inflicted fear onto her enemies and inspired her allies with victorious confidence. While her hull may be gone now, the respect she brought to the name <i>Enterprise</i> is as inextinguishable as the Grey Ghost herself in the heat of battle.
+</p>
+</body>
+</html>

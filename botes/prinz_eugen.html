@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="stylesheet/styles.css">
+	<title>KMS Prinz Eugen</title>
+<style>
+.topnav a.active {
+background-color: #831a00;
+color: white;
+}
+.topnav a.active:hover{
+  box-shadow: 0 0 6px 6px #831a00;
+  transition: 0.15s;
+}
+.prinzDiv{
+	padding-top: 10px;
+	position: relative;
+  width: 20vw;
+}
+</style>
+</head>
+<body>
+	<!--Navbar-->
+  <div class="topnav" id = "navBar">
+    <a href="../index.html"class="bagel" id="home">Home</a>
+    <div class="dropdown">
+        <button class="dropbtn" id="bagel">United States Navy</button>
+        <div class="dropdown-content">
+          <a href="washington.html" class="bagel">Washington</a>
+          <a href="enterprise.html" class="bagel">Enterprise</a>
+          <a href="san_francisco.html" class="bagel">San Francisco</a>
+        </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn" id="tostido">British Royal Navy</button>
+      <div class="dropdown-content">
+          <a href="belfast.html" class="tostido">Belfast</a>
+          <a href="hood.html" class="tostido">Hood</a>
+          <a href="ark_royal.html" class="tostido">Ark Royal</a>
+      </div>
+  </div>
+  <div class="dropdown">
+      <button class="dropbtn" id="potato">Imperial Japanese Navy</button>
+      <div class="dropdown-content">
+          <a href="yamato.html" class="potato">Yamato</a>
+          <a href="sho-zui.html"class="potato">Shōkaku and Zuikaku</a>
+          <a href="ayanami.html"class="potato">Ayanami</a>
+      </div>
+  </div>
+  <div class="dropdown">
+      <button class="dropbtn" id="sourpatch">German <i>Kriegsmarine</i></button>
+      <div class="dropdown-content">
+          <a href="bismarck.html"class="sourpatch">Bismarck</a>
+          <a href="u-47.html"class="sourpatch">U-47</a>
+          <a href="prinz_eugen.html"class="active"><b>Prinz Eugen</b></a>
+      </div>
+  </div>
+  <a href="minesweeper game/minesweeper.html"class="sourpatch" id="battleship" style="float: right">Play Minesweeper</a>
+  </div>
+<!--introductory text-->
+<h2 style="margin-top: 12px">Auxiliary Antagonist: KMS <i>Prinz Eugen</i></h2>
+<p>
+  The KMS <i>Prinz Eugen</i> was an <i>Admiral Hipper-</i>class heavy cruiser under Nazi Germany's <i class="qtip tip-top" data-tip="The Kriegsmarine was Nazi Germany's navy."><i>Kriegsmarine.</i></i> Laid down on 23 April, 1936, at Germaniawerft, Kiel, she wasn't commissioned into the <i>Kriegsmarine</i> until the first of August, 1940, despite being launched two years earlier. Even still, she spent the rest of 1940 and a portion of 1941 conducting <i class="qtip tip-top" data-tip="When a ship's performance is tested before she officially joins the service or after a major retrofit or crew change.">sea trials</i> and gunnery training before striking a magnetic mine on 23 April, 1941. In mid-May, her repairs were completed and she was deployed towards the Atlantic alongside the battleship <i>Bismarck</i> to raid Allied commerce for Operation Rheinübung.
+</p>
+<br>
+<!--Image-->
+<div class="prinzDiv" style=" margin-left: 5%; width: 95%">
+	<img src="images/Prinz_Eugen.jpg" id="prinzImg" alt="KMS Prinz Eugen launching in 1938" style="text-align: left" width="40%" height="auto">
+  <script src="http://cdn.amcharts.com/lib/4/core.js"></script>
+  <script src="http://cdn.amcharts.com/lib/4/charts.js"></script>
+  <div class="wrapper" style="text-align: right !important; width: 40%; float:right; margin-right: 8vw; padding: 0; max-height: fit-content;">
+  <div id="chartdiv"></div>
+  </div>
+  <style>
+    #chartdiv {
+    height: 50vh;
+    width: 100%;
+    z-index: -100;
+    font-size: 1.5vh;
+    padding: 0;
+    margin: auto;
+  }
+  </style>
+  
+  <script>
+    
+    var chart = am4core.create("chartdiv", am4charts.RadarChart);
+  
+  chart.data = [{
+  
+  "category": "Displacement - 17,000 tons",
+  "percent": 50
+  }, {
+  "category": "Speed - 32 knots",
+  "percent": 82
+  }, {
+  "category": "Range - 6,800 nautical miles",
+  "percent": 19
+  }, {
+  "category": "Belt Armor - 70-80 mm",
+  "percent": 14
+  }, {
+  "category": "Length - 212.5 m",
+  "percent": 49
+  }];
+  
+  /* Create axes */
+  var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+  categoryAxis.dataFields.category = "category";
+  
+  var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+  valueAxis.renderer.axisFills.template.fill = chart.colors.getIndex(2);
+  valueAxis.renderer.axisFills.template.fillOpacity = 0.05;
+  valueAxis.fillOpacity = 0;
+  
+  
+  /* Create and configure series */
+  var series = chart.series.push(new am4charts.RadarSeries());
+  series.dataFields.valueY = "percent";
+  series.dataFields.categoryX = "category";
+  series.name = "Sales";
+  series.strokeWidth = 3;
+  
+  series.tooltipText = "{valueY.formatNumber('')}";
+  
+  </script>
+	<p style="text-align: left; margin: 0 0 0 0; font-size: .69vw"><i>KMS Prinz Eugen launching at Germaniawerft, Kiel, 22 August 1938</i></p>
+</div>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+	<span class="close">&times;</span>
+	<img class="modal-content" id="img01">
+	<div id="caption"></div>
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById("myModal");
+  
+  // Get the image and insert it inside the modal
+  var img = document.getElementById("prinzImg");
+  var modalImg = document.getElementById("img01");
+
+  img.onclick = function(){
+	modal.style.display = "block";
+	modalImg.src = this.src;
+	captionText.innerHTML = this.alt;
+  }
+  window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() { 
+	modal.style.display = "none";
+  }
+  </script>
+
+<!--second text-->
+<h2 style="margin-top: 12px">Prinz Eugen in the Second World War</h2>
+<p>
+  In late May, <i>Prinz Eugen</i> and <i>Bismarck</i> sortied towards British waters to disrupt their supply chain as the lone two participants of Operation Rheinübung, a mission originally planned for a significantly larger fleet. Shortly after their voyage began, the German flotilla was spotted by a neutral Swedish cruiser: the HSwMS <i>Gotland.</i> Although Sweden was committed to an officially neutral stance during the War, the commanding officers of <i>Prinz Eugen</i> and <i>Bismarck</i> agreed that their operation's secrecy had been compromised - a prediction that would later prove to be accurate. The following morning, <i>Prinz Eugen's</i> crew intercepted a radio transmission ordering British reconnaissance aircraft to search for the German flotilla. Over the next few days, the <i>Kriegsmarine</i> duo made for the Denmark Strait, and on the night of 23 May, spotted the British heavy cruiser HMS <i>Suffolk,</i> which had reported their location. After being joined by the HMS <i>Norfolk,</i> another heavy cruiser, the British ships began to shadow the Germans. There was a brief engagement where <i>Bismarck</i> fired at <i>Norfolk</i> after the latter ship got within range, but she suffered minimal damage and simply moved back out of range and resumed tailing the Germans. Their location was constantly transmitted to British command, and the Battle of the Denmark Strait began the next morning.
+</p>
+<p>
+  At about 5:45 in the morning, German lookouts spotted the British battlecruiser <i>Hood</i> and the battleship <i>Prince of Wales</i> on the horizon. A few minutes later, the British ships opened fire, with <i>Hood</i> targeting <i>Prinz Eugen</i> and <i>Prince of Wales</i> attacking <i>Bismarck.</i> The German ships returned fire, focusing on <i>Hood,</i> and <i>Prinz Eugen's</i> first salvo struck her and detonated some unrotated ammunition, starting a fire that was quickly put out. Subsequently, <i>Bismarck</i> ordered <i>Prinz Eugen</i> to shift her fire to <i>Prince of Wales</i> so that both British ships were under fire. <i>Prinz Eugen</i> quickly managed to land another pair of hits on the battleship, starting yet another fire. At the same time, one of <i>Bismarck's</i> salvos struck <i>Hood's</i> upper belt and detonated over a hundred tons of <i class="qtip tip-top" data-tip="The replacement for gunpowder.">cordite propellant</i>. After only eight minutes of engaging the German ships, <i>Hood</i> was entirely submerged under the water. Following the loss of <i>Hood,</i> the <i>Prince of Wales</i> managed to withdraw, but not before scoring a few hits on <i>Bismarck.</i> After reporting in to German High Command, the commanding officer of the operation, Günther Lütjens, made the decision to detach <i>Prinz Eugen</i> from <i>Bismarck,</i> with the heavy cruiser going through with raiding the Atlantic while <i>Bismarck</i> made for St. Nazaire, France, for repairs. In early evening, still during 24 May, a task force consisting of dozens of ships now had the primary goal of sinking <i>Bismarck.</i> While being followed by <i>Suffolk</i> and a patched-up <i>Prince of Wales,</i> <i>Bismarck</i> engaged her pursuers to allow <i>Prinz Eugen</i> to escape.
+</p>
+
+<div class="prinzDiv" style="text-align: center; width: 95%">
+	<img src="images/Prinz_Eugen2.jpg" id="prinzImg2" alt="Prinz Eugen anchored in the Baltic" width="40%" height="auto">
+	<p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>KMS Prinz Eugen anchored in the Baltic in the spring of 1941</i></p>
+</div>
+
+<!--Modal 2-->
+
+<div id="myModal2" class="modal">
+	<span class="close">&times;</span>
+	<img class="modal-content" id="img02" style="height: 95%; width: auto">
+	<div id="caption2"></div>
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById("myModal2");
+  
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var img = document.getElementById("prinzImg2");
+  var modalImg = document.getElementById("img02");
+
+  img.onclick = function(){
+	modal.style.display = "block";
+	modalImg.src = this.src;
+	captionText.innerHTML = this.alt;
+  }
+  window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() { 
+	modal.style.display = "none";
+  }
+  </script>
+<p>
+  On 26 May, <i>Prinz Eugen,</i> now the lone operator in Operation Rheinübung, rendezvoused with a supply ship, the <i>Spichern,</i> for a fuel refill. Despite finally being in range of Allied shipping lines, <i>Prinz Eugen</i> encountered engine problems the next day, and she was ordered to head towards a port in France. On the first of June, she finally reached Brest, leaving the failed Operation Rheinübung and the dreadnought <i>Bismarck</i> behind forever. During her time in Brest, <i>Prinz Eugen,</i> alongside the battleships <i>Scharnhorst</i> and <i>Gneisenau</i> who were also docked there, found herself a constant target of Allied bombers due to Brest's short distance from southern England. A constant need for repairs forced <i>Prinz Eugen</i> out of commission until the end of 1941. On 11 February, 1942, the three ships left Brest for safer bases in Germany so that they could be deployed into the Norwegian Theater. The three ships moved through the English Channel and were reinforced by a flotilla of torpedo boats. On 11 February, a flight of six Allied bombers attacked the German force, but German fighters shot them down before the could deal any damage. Off Dover, <i>Prinz Eugen</i> was attacked by British artillery, torpedo boats, and five destroyers, but managed to successfully evade the threats. On 13 February, the German flotilla arrived at Brunsbüttel, Germany, almost completely unscathed. 
+</p>
+<p>
+  Only a week later, <i>Prinz Eugen</i> was deployed into Norway alongside the heavy cruiser <i>Admiral Scheer</i> and five destroyers. On 23 February, however, the British submarine <i>Trident</i> torpedoed <i>Prinz Eugen,</i> rendering her unmaneuverable. She was towed from Trondheim to Lofjord for emergency repairs. In mid-May, she was able to make for Kiel on her own power, but was strafed - unsuccessfully - by almost fifty bombers while en route. In Kiel, she was out of service for repairs until resuming sea trials in October and attempted to return to Norway alongside <i>Scharnhorst</i> in January, 1943. Despite these attempts, British reconnaissance made it impossible for them to reinforce the ships in Norway, and <i>Prinz Eugen</i> returned to the Baltic. For almost a year, she was out of combat service and cruised alongside Baltic cadets for training. As Germany began to lose the Eastern Front, however, it became necessary to recommission <i>Prinz Eugen</i> as a gunnery support vessel. In the latter half of 1934, <i>Prinz Eugen,</i> now a part of the Second Task Force, took part in a number of operations designed to defend more territory from either Allied capture or defection from the Axis faction. Over 19-20 of August, she bombarded Tukums, Latvia, which successfully repelled Soviet forces in the area. In mid-October, she provided support for German troops in Memel, Lithuania before moving back to Germany. Although she continued performing in other minor operations, the end of the War was approaching. On 7 May, 1945, Germany surrendered, and <i>Prinz Eugen</i> was decommissioned before being turned over to the Royal Navy at Copenhagen, Denmark.
+</p>
+
+<div class="prinzDiv" style="text-align: center; width: 95%">
+	<img src="images/Prinz_Eugen3.jpg" id="prinzImg3" alt="Prinz Eugen in the Panama Canal" width="40%" height="auto">
+	<p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>USS Prinz Eugen (IX-300) passing through the Gatun locks in the Panama Canal, 15 March, 1946</i></p>
+  <p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>Prinz Eugen made for Bikini Atoll where she would take part in her final mission: Operation Crossroads</i></p>
+</div>
+
+<div id="myModal3" class="modal">
+	<span class="close">&times;</span>
+	<img class="modal-content" id="img03" style="height: 95%; width: auto">
+	<div id="caption3"></div>
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById("myModal3");
+  
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var img = document.getElementById("prinzImg3");
+  var modalImg = document.getElementById("img03");
+
+  img.onclick = function(){
+	modal.style.display = "block";
+	modalImg.src = this.src;
+	captionText.innerHTML = this.alt;
+  }
+  window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() { 
+	modal.style.display = "none";
+  }
+  </script>
+<h2>End of <i>Prinz Eugen</i></h2>
+<p>
+  On 27 May, 1945, <i>Prinz Eugen</i> was brought to Wilhelmshaven, Germany, before being turned over to the United States as a war prize on 13 December. She would be recommissioned into the United States Navy as <i>Prinz Eugen</i> IX-300 - IX representing 'unclassified miscellaneous vessels.' In 1946, she was brought to Boston for an extensive examination, with some of her technology, such as her sonar, being refitted onto other US Navy ships for testing. In May, she was brought to Bikini Atoll to participate in Operation Crossroads, a pair of nuclear weapon tests designed to study the effects of nuclear weapons on warships. During Crossroads, <i>Prinz Eugen</i> suffered only minor damages, but these damages started a leak that would go unrepaired due to the nukes contaminating her with radiation. As if out of pity, <i>Prinz Eugen</i> was decommissioned from the United States Navy on 29 August, 1946. Still suffering from her minor leak at Bikini Atoll, <i>Prinz Eugen</i> finally capsized on 22 December despite the US Navy's attempt to keep her afloat to properly salvage her. <i>Prinz Eugen</i> still rests completely visible near the edge of Bikini Atoll. In 1979, one of her screw propellors was retrieved and placed in the Laboe Naval Memorial in Germany and the ship's bell is being held at the National Museum of the United States Navy. In 2018, the US Navy conducted a joint operation alongside Micronesia to remove <i>Prinz Eugen's</i> remaining fuel to prevent the possibility of causing an oil leak. Over seventy years after Operation Crossroads, <i>Prinz Eugen</i> remains mostly undisturbed, providing naught but an exciting story for thrill-seeking divers.
+</p>
+</body>
+</html>

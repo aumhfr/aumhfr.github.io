@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="stylesheet/styles.css">
+	<title>KMS U-47</title>
+<style>
+.topnav a.active {
+background-color: #831a00;
+color: white;
+}
+.topnav a.active:hover{
+  box-shadow: 0 0 6px 6px #831a00;
+  transition: 0.15s;
+}
+.u47Div{
+	padding-top: 10px;
+	position: relative;
+  width: 20vw;
+}
+</style>
+</head>
+<body>
+	<!--Navbar-->
+  <div class="topnav" id = "navBar">
+    <a href="../index.html"class="bagel" id="home">Home</a>
+    <div class="dropdown">
+        <button class="dropbtn" id="bagel">United States Navy</button>
+        <div class="dropdown-content">
+          <a href="washington.html" class="bagel">Washington</a>
+          <a href="enterprise.html" class="bagel">Enterprise</a>
+          <a href="san_francisco.html" class="bagel">San Francisco</a>
+        </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn" id="tostido">British Royal Navy</button>
+      <div class="dropdown-content">
+          <a href="belfast.html" class="tostido">Belfast</a>
+          <a href="hood.html" class="tostido">Hood</a>
+          <a href="ark_royal.html" class="tostido"><b>Ark Royal</b></a>
+      </div>
+  </div>
+  <div class="dropdown">
+      <button class="dropbtn" id="potato">Imperial Japanese Navy</button>
+      <div class="dropdown-content">
+          <a href="yamato.html" class="potato">Yamato</a>
+          <a href="sho-zui.html"class="potato">Shōkaku and Zuikaku</a>
+          <a href="ayanami.html"class="potato">Ayanami</a>
+      </div>
+  </div>
+  <div class="dropdown">
+      <button class="dropbtn" id="sourpatch">German <i>Kriegsmarine</i></button>
+      <div class="dropdown-content">
+          <a href="bismarck.html"class="sourpatch">Bismarck</a>
+          <a href="u-47.html"class="active"><b>U-47</b></a>
+          <a href="prinz_eugen.html"class="sourpatch">Prinz Eugen</a>
+      </div>
+  </div>
+  <a href="minesweeper game/minesweeper.html"class="sourpatch" id="battleship" style="float: right">Play Minesweeper</a>
+  </div>
+<!--introductory text-->
+<h2 style="margin-top: 12px"><i>U-47,</i> Submersible Wolf</h2>
+<p>
+  Of all the militaristic might displayed by the German <i class="qtip tip-top" data-tip="The Kriegsmarine was Nazi Germany's navy."><i>Kriegsmarine</i></i> during the Second World War, arguably the most dangerous threats to the Allies' economy were their U-Boats - German submarines. By the end of the War, over 2,500 Allied shipping vessels were sunk by U-Boats, an estimate covering over 70% of supply losses. <i>U-47</i> was a Type VIIB submarine laid down in late-February of 1937 at Germaniawerft, Kiel, and was commissioned on 17 December, 1938. As a submarine, she only required a small crew of a few dozen, including four officers. <i>U-47</i> was assigned to the 7th U-Boat Flotilla, where she would remain for the entirety of her military career. Despite the War breaking out in September 1939, she was deployed preemptively to the British Isles on 19 August, 1939, to be able to launch an attack as soon as war was declared.
+</p>
+<br>
+<!--Image-->
+<div class="u47Div" style=" margin-left: 5%; width: 95%">
+	<img src="images/u-47.jpg" id="u47Img" alt="KMS U-47 in Kiel, Germany" style="text-align: left" width="40%" height="auto">
+  <script src="http://cdn.amcharts.com/lib/4/core.js"></script>
+  <script src="http://cdn.amcharts.com/lib/4/charts.js"></script>
+  <div class="wrapper" style="text-align: right !important; width: 40%; float:right; margin-right: 8vw; padding: 0; max-height: fit-content;">
+  <div id="chartdiv"></div>
+  </div>
+  <style>
+    #chartdiv {
+    height: 50vh;
+    width: 100%;
+    z-index: -100;
+    font-size: 1.5vh;
+    padding: 0;
+    margin: auto;
+  }
+  </style>
+  
+  <script>
+    
+    var chart = am4core.create("chartdiv", am4charts.RadarChart);
+  
+  chart.data = [{
+  
+  "category": "Displacement - 753 tons (surfaced)",
+  "percent": 3
+  }, {
+  "category": "Speed - 17.7 knots",
+  "percent": 22
+  }, {
+  "category": "Range - 8,700 nautical miles",
+  "percent": 33
+  }, {
+  "category": "Hull Thickness - 18.5 mm",
+  "percent": 7
+  }, {
+  "category": "Length - 66.5 m",
+  "percent": 11
+  }];
+  
+  /* Create axes */
+  var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+  categoryAxis.dataFields.category = "category";
+  
+  var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+  valueAxis.renderer.axisFills.template.fill = chart.colors.getIndex(2);
+  valueAxis.renderer.axisFills.template.fillOpacity = 0.05;
+  valueAxis.fillOpacity = 0;
+  
+  
+  /* Create and configure series */
+  var series = chart.series.push(new am4charts.RadarSeries());
+  series.dataFields.valueY = "percent";
+  series.dataFields.categoryX = "category";
+  series.name = "Sales";
+  series.strokeWidth = 3;
+  
+  series.tooltipText = "{valueY.formatNumber('')}";
+  
+  </script>
+	<p style="text-align: left; margin: 0 0 0 0; font-size: .69vw"><i>U-47 likely located at Germaniawerft in Kiel, Germany</i></p>
+  <p style="text-align: left; margin: 0 0 0 0; font-size: .69vw"><i>The type VIIB U-Boat held a small crew of between 44 and 60 mariners</i></p>
+</div>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+	<span class="close">&times;</span>
+	<img class="modal-content" id="img01">
+	<div id="caption"></div>
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById("myModal");
+  
+  // Get the image and insert it inside the modal
+  var img = document.getElementById("u47Img");
+  var modalImg = document.getElementById("img01");
+
+  img.onclick = function(){
+	modal.style.display = "block";
+	modalImg.src = this.src;
+	captionText.innerHTML = this.alt;
+  }
+  window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() { 
+	modal.style.display = "none";
+  }
+  </script>
+
+<!--second text-->
+<h2 style="margin-top: 12px">Supply Line Saboteur</h2>
+<p>
+  When war was declared on September third, U-47 immediately received orders to initiate hostilities against British ships, but she didn't engage her first cargo ship - the SS <i>Bosnia</i> - until two days later. <i>Bosnia</i> was the second merchant ship sunk during the War after the <i>Athenia,</i> but all of her crew was brought aboard by <i>U-47</i> and was transferred to a nearby neutral Norwegian vessel. The next day, she commenced a similar attack on a larger freighter, and would do so again the following day. On 7 September, she forced the SS <i>Gartavon's</i> crew to abandon ship, but not before they rigged it to try to ram into <i>U-47.</i> The submarine was forced to take evasive maneuvers, avoiding the attack. The captain of the <i>U-47,</i> Günther Prien, then offered the <i>Gartavon's</i> crew a second lifeboat from the circling vessel, which they politely declined. <i>U-47</i> finally sank the <i>Gartavon,</i> although she had to use her deck gun instead of the usual torpedo to finally sink the merchant vessel. On 15 September, <i>U-47</i> returned to Kiel to conclude her first patrol.
+</p>
+<p>
+  Following a short letup, <i>U-47</i> sortied for her second patrol on 8 October, 1939. A week later, she succeeded in infiltrating Scapa Flow, Britain's primary naval base in both World Wars. Although most of the <i class="qtip tip-top" data-tip="The Home Fleet was a Royal Navy fleet tasked with operations taking part in Great Britain's territorial waters.">Home Fleet</i> was deployed, the <i>HMS Royal Oak,</i> a <i>Revenge-</i>class battleship, provided a valuable target for the submarine crew. Immediately taking the opportunity, <i>U-47</i> fired multiple salvos of torpedos and struck the battleship several times. Within 15 minutes, the battleship sunk while <i>U-47</i> escaped unscathed. Captain Prien was awarded the Knight's Cross of the Iron Cross, one of the highest decorations for Nazi Germany's military, while the rest of the crew received Iron Crosses. Since the year 2000, two unexploded torpedos have been found around the area of Scapa Flow, which are believed to have been from <i>U-47's</i> attack on the <i>Royal Oak.</i>
+</p>
+
+<div class="u47Div" style="text-align: center; width: 95%">
+	<img src="images/u-472.jpg" id="u47Img2" alt="KMS Bismarck photographed by Prinz Eugen's crew" width="40%" height="auto">
+	<p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>U-47 arriving at Wilhelmshaven, Germany, after the sinking of the HMS Royal Oak</i></p>
+  <p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>Photo taken on October 17, 1939</i></p>
+</div>
+
+<!--Modal 2-->
+
+<div id="myModal2" class="modal">
+	<span class="close">&times;</span>
+	<img class="modal-content" id="img02" style="height: 95%; width: auto">
+	<div id="caption2"></div>
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById("myModal2");
+  
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var img = document.getElementById("u47Img2");
+  var modalImg = document.getElementById("img02");
+
+  img.onclick = function(){
+	modal.style.display = "block";
+	modalImg.src = this.src;
+	captionText.innerHTML = this.alt;
+  }
+  window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() { 
+	modal.style.display = "none";
+  }
+  </script>
+<p>
+  Over the next couple of years, <i>U-47</i> sortied for a number of relatively uneventful patrols. While she sunk dozens of merchant ships like in her first patrol, she also had a few close calls with British destroyers attempting to destroy her with <i class="qtip tip-top" data-tip="A barrel-like container packed with an explosive, used as an anti-submarine weapon.">depth charges</i>. Around 19 April, she engaged the HMS <i>Warspite,</i> a <i>Queel Elizabeth-</i>class battleship, but was forced off by destroyers once again bombarding her with depth charges. On her sixth patrol, <i>U-47</i> took the reigns of <i class="qtip tip-top" data-tip="U-Boat wolfpacks were formations of submarines coordinating an attack on a single target or group of targets.">Wolfpack</i> Prien - named after her captain - to attack the British convoy HX 47.  Between 13 and 15 June, 1940, Wolfpack Prien sunk five merchant ships, and by the time <i>U-47</i> returned to Kiel in early July, she alone had sunk a total of eight vessels. On 20 February, 1941, <i>U-47</i> departed the French port of Lorient for her tenth and final patrol.
+</p>
+<h2>End of <i>U-47</i></h2>
+<p>
+  To this day, no one knows for sure what exactly happened to the <i>U-47</i> or her crew. On 7 March, 1941, the U-Boat went missing and was presumed to have been sunk by the HMS destroyers <i>Wolverine</i> and <i>Verity,</i> but postwar assessment revealed that the victim of their attack was the <i>UA,</i> a Turkish design adopted into the <i>Kriegsmarine,</i> which was only damaged by the <i>Wolverine.</i> The question reemerges: what happened to <i>U-47</i> and her crew? There are endless possibilities. Mines, a mechanical failure, or a torpedo exploding are all probable explanations, although there are many unique ways for a submarine to sink. On 14 April, 1945, the U-Boat <i>U-1206</i> suffered a toilet malfunction while submerged that caused a leak to flood her batteries. The drenched batteries created chlorine gas that forced her crew to resurface her, where she was quickly sunk by British patrols and the majority of her crew captured. Regardless, it's unlikely that there will ever be a true conclusion to <i>U-47's</i> story. I like to think that the decorated crew defected from the <i>Kriegsmarine</i> and colonized a tiny island.
+</p>
+<p>
+  Although the brunt of warfare is all about combatants facing off against each other, it has been proven time and again that the disruption of enemy economics is just as important. By her disappearance, <i>U-47</i> sunk 30 commercial ships, damaging another 8, and sunk one warship. One U-Boat alone sunk over 150,000 gross registered tonnage worth of Allied supplies. With over a thousand U-Boats deployed over the entirety of the War, Germany's ability to annex so much territory during its conquest becomes much less of a mystery. 
+</p>
+</body>
+</html>

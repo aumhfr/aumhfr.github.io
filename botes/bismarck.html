@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>KMS Bismarck</title>
+<link rel="stylesheet" href="stylesheet/styles.css">
+<style>
+.topnav a.active {
+background-color: #831a00;
+color: white;
+}
+.topnav a.active:hover{
+  box-shadow: 0 0 6px 6px #831a00;
+  transition: 0.15s;
+}
+.bismarckDiv{
+	padding-top: 10px;
+	position: relative;
+  width: 20vw;
+}
+</style>
+</head>
+<body>
+	<!--Navbar-->
+  <div class="topnav" id = "navBar">
+    <a href="../index.html"class="bagel" id="home">Home</a>
+    <div class="dropdown">
+        <button class="dropbtn" id="bagel">United States Navy</button>
+        <div class="dropdown-content">
+          <a href="washington.html" class="bagel">Washington</a>
+          <a href="enterprise.html" class="bagel">Enterprise</a>
+          <a href="san_francisco.html" class="bagel">San Francisco</a>
+        </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn" id="tostido">British Royal Navy</button>
+      <div class="dropdown-content">
+          <a href="belfast.html" class="tostido">Belfast</a>
+          <a href="hood.html" class="tostido">Hood</a>
+          <a href="ark_royal.html" class="tostido">Ark Royal</a>
+      </div>
+  </div>
+  <div class="dropdown">
+      <button class="dropbtn" id="potato">Imperial Japanese Navy</button>
+      <div class="dropdown-content">
+          <a href="yamato.html" class="potato">Yamato</a>
+          <a href="sho-zui.html"class="potato">Shōkaku and Zuikaku</a>
+          <a href="ayanami.html"class="potato">Ayanami</a>
+      </div>
+  </div>
+  <div class="dropdown">
+      <button class="dropbtn" id="sourpatch">German <i>Kriegsmarine</i></button>
+      <div class="dropdown-content">
+          <a href="bismarck.html"class="active"><b>Bismarck</b></a>
+          <a href="u-47.html"class="sourpatch">U-47</a>
+          <a href="prinz_eugen.html"class="sourpatch">Prinz Eugen</a>
+      </div>
+  </div>
+  <a href="minesweeper game/minesweeper.html"class="sourpatch" id="battleship" style="float: right">Play Minesweeper</a>
+  </div>
+  
+</div>
+<!--introductory text-->
+<h2 style="margin-top: 12px">The Power of German Engineering: KMS <i>Bismarck</i></h2>
+<p>
+  The <i>Bismarck</i> was the first of two <i>Bismarck-</i>class battleships, followed by the <i class="qtip tip-top" data-tip="The Kriegsmarine was Nazi Germany's navy.">KMS</i> <i>Tirpitz.</i> Laid down at the Blohm & Voss shipyard on the first of July, 1936 and commissioned on 24 August 1940, the rumors surrounding the "largest battleship ever built by Germany" would paint her as one of the greatest threats to the Allied forces. The <i>Bismarck-</i>class was designed in response to France's <i>Richelieu-</i>class battleships that began construction in 1935. Although the Washington Naval Treaty of 1922 limited their hull displacement to 36,000 tons, <i>Bismarck</i> and her sister were secretly constructed without abiding to these constraints, passing them by a wide margin. By the time <i>Bismarck</i> and <i>Tirpitz</i> were completed, however, Japan withdrew from the Washington Naval Treaty, causing it to fall apart. This allowed signatories, including Germany, to invoke an "escalator clause" that would result in two of the largest warships ever created by any European power.
+</p>
+<br>
+<!--Image-->
+<div class="bismarckDiv" style=" margin-left: 5%; width: 95%">
+	<img src="images/Bismarck.jpg" id="bismarckImg" alt="KMS Bismarck launching in 1939" style="text-align: left" width="40%" height="auto">
+  <script src="http://cdn.amcharts.com/lib/4/core.js"></script>
+  <script src="http://cdn.amcharts.com/lib/4/charts.js"></script>
+  <div class="wrapper" style="text-align: right !important; width: 40%; float:right; margin-right: 8vw; padding: 0; max-height: fit-content;">
+  <div id="chartdiv"></div>
+  </div>
+  <style>
+    #chartdiv {
+    height: 50vh;
+    width: 100%;
+    z-index: -100;
+    font-size: 1.5vh;
+    padding: 0;
+    margin: auto;
+  }
+  </style>
+  
+  <script>
+    
+    var chart = am4core.create("chartdiv", am4charts.RadarChart);
+  
+  chart.data = [{
+  
+  "category": "Displacement - 41,700 tons",
+  "percent": 91
+  }, {
+  "category": "Speed - 30 knots",
+  "percent": 52
+  }, {
+  "category": "Range - 8,870 nautical miles",
+  "percent": 35
+  }, {
+  "category": "Belt Armor - 320 mm",
+  "percent": 76
+  }, {
+  "category": "Length - 241.6 m",
+  "percent": 69
+  }];
+  
+  /* Create axes */
+  var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+  categoryAxis.dataFields.category = "category";
+  
+  var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+  valueAxis.renderer.axisFills.template.fill = chart.colors.getIndex(2);
+  valueAxis.renderer.axisFills.template.fillOpacity = 0.05;
+  valueAxis.fillOpacity = 0;
+  
+  
+  /* Create and configure series */
+  var series = chart.series.push(new am4charts.RadarSeries());
+  series.dataFields.valueY = "percent";
+  series.dataFields.categoryX = "category";
+  series.name = "Sales";
+  series.strokeWidth = 3;
+  
+  series.tooltipText = "{valueY.formatNumber('')}";
+  
+  </script>
+	<p style="text-align: left; margin: 0 0 0 0; font-size: .69vw"><i>KMS Birmarck launching from slipway 9 at Blohm & Voss shipyard, 14 February 1939</i></p>
+</div>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+	<span class="close">&times;</span>
+	<img class="modal-content" id="img01">
+	<div id="caption"></div>
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById("myModal");
+  
+  // Get the image and insert it inside the modal
+  var img = document.getElementById("bismarckImg");
+  var modalImg = document.getElementById("img01");
+
+  img.onclick = function(){
+	modal.style.display = "block";
+	modalImg.src = this.src;
+	captionText.innerHTML = this.alt;
+  }
+  window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() { 
+	modal.style.display = "none";
+  }
+  </script>
+
+<!--second text-->
+<h2 style="margin-top: 12px">The Allies' Number One Bounty</h2>
+<p>
+  Following her commissioning in late-August of 1940, now with World War II well underway, <i>Bismarck</i> conducted <i class="qtip tip-top" data-tip="When a ship's performance is tested before she officially joins the service or after a major retrofit or crew change.">sea trials</i> in the Baltic until December to test her performance. Afterwards, she returned to Hamburg to complete her fitting-out before preparing to voyage to Kiel. This voyage was delayed for about five weeks, however, as a merchant vessel had sunk in the Kiel Canal, blocking any potential passage. During her time stuck in Hamburg, a Swedish naval attaché was given a tour of <i>Bismarck.</i> A somewhat-detailed description of the ship would eventually be leaked to Britain by elements of the Swedish Navy, giving the Allies their first information on Germany's colossal titan. On the ninth of March, 1941, <i>Bismarck</i> finally reached Kiel, where she donned camouflage and ammunition before making way to Gotenhafen for combat readiness training.
+</p>
+<p>
+  Towards the end of March, the two <i>Scharnhorst-</i>class battleships, <i>Scharnhorst</i> and <i>Gneisenau,</i> were conducting raid operations in the Atlantic. <i>Bismarck</i> and the soon-to-be-completed <i>Tirpitz</i> were to rendezvous with the <i>Scharnhorst</i> sisters on 25 April, but a delay on <i>Tirpitz's</i> completion and commissioning would see her unable to take part in the operation. Furthermore, <i>Scharnhorst</i> and <i>Gneisenau</i> received damage following one of their recent operations, rendering them unable to conduct more raids immediately. Although the four battleships were originally supposed to unite alongside a trio of heavy cruisers, only two ships, <i>Bismarck</i> and the heavy cruiser <i>Prinz Eugen,</i> were major participants in the campaign that would be dubbed Operation Rheinübung. Regardless, Germany made it clear that the operation was to go on no matter what, as giving the Allies a chance to regain their supply chain in the Atlantic was too great a risk to take. On the fifth of May, an entourage including Adolf Hitler toured <i>Bismarck</i> at Gotenhafen to discuss the upcoming operation. On 19 May, <i>Bismarck</i> and <i>Prinz Eugen</i> were ordered to make for the Danish straits with an escort of three destroyers and a flotilla of minesweepers. 
+</p>
+
+<div class="bismarckDiv" style="text-align: center; width: 95%">
+	<img src="images/Bismarck2.jpg" id="bismarckImg2" alt="KMS Bismarck photographed by Prinz Eugen's crew" width="40%" height="auto">
+	<p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>KMS Bismarck, photographed from Prinz Eugen, in the Baltic during sortie for Operation Rheinübung</i></p>
+</div>
+
+<!--Modal 2-->
+
+<div id="myModal2" class="modal">
+	<span class="close">&times;</span>
+	<img class="modal-content" id="img02" style="height: 95%; width: auto">
+	<div id="caption2"></div>
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById("myModal2");
+  
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var img = document.getElementById("bismarckImg2");
+  var modalImg = document.getElementById("img02");
+
+  img.onclick = function(){
+	modal.style.display = "block";
+	modalImg.src = this.src;
+	captionText.innerHTML = this.alt;
+  }
+  window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() { 
+	modal.style.display = "none";
+  }
+  </script>
+<h2>Operation Rheinübung</h2>
+<p>
+  On May 20, the German flotilla encountered a Swedish cruiser, HSwMS <i>Gotland,</i> in the early afternoon. <i>Gotland</i> shadowed the flotilla for about two hours, and Sweden's official neutrality during the War protected her from the German vessels. Despite German command believing that <i>Gotland</i> posed no security risk, both the <i>Kriegsmarine</i> <i class="qtip tip-top" data-tip="Admiral Günther Lütjens">fleet chief</i>, who was chosen to lead the operation, and <i class="qtip tip-top" data-tip="Ernst Lindemann"><i>Bismarck's</i> captain</i>  believed that the secrecy of the operation was compromised. This suspicion would prove to be true, as the whereabouts of the German force would be relayed to the British naval attaché in Sweden before reaching the ears of the <i class="qtip tip-top" data-tip="The Admiralty was a department of the British government responsible for commanding the Royal Navy until it was dissolved in 1964.">British Admiralty</i>. After British code-breakers confirmed that an Atlantic raid was imminent, a pair of Supermarine Spitfires was sent to search for the German fleet. On 21 May, British reconnaissance aircraft spotted the German force at Norway, and the British Home Fleet was placed on high alert in Scapa Flow while the battlecruiser HMS <i>Hood,</i> the battleship <i>Prince of Wales,</i> and six destroyers were sent to reinforce the Denmark Strait. The next day, the German flotilla, now without an escort of destroyers, would make way through the Denmark Strait before being reported on by the HMS <i>Suffolk.</i> At about 6 in the morning on 24 May, German lookouts spotted <i>Hood</i> and <i>Prince of Wales</i> on the horizon.
+</p>
+<p>
+  HMS <i>Hood</i> was the first to open fire, followed by <i>Prince of Wales,</i> engaging <i>Prinz Eugen.</i> Although fleet chief Lütjens was reluctant to return fire, Bismarck's Captain Lindeeman demanded permission to do so and was reluctantly granted Lütjens' consent a few minutes later. Still unscathed, the German duo returned fire with <i>Prinz Eugen</i> scoring the first hit (albeit mostly ineffective) of the battle. After a few salvos, the First Gunnery Officer aboard <i>Bismarck</i> calculated the range to <i>Hood</i> while <i>Prinz Eugen</i> switched her focus onto <i>Prince of Wales,</i> scoring a pair of hits that started a fire. <i>Prinz Eugen</i> was thereafter ordered to fall back to monitor the whereabouts of two British cruisers, <i>Norfolk </i>and <i>Suffolk.</i> While <i>Hood</i> was repositioning, she was struck by part of <i>Bismarck's</i> salvo, piercing her deck armor and igniting her rear ammunition magazine, sinking the battlecruiser within minutes. After <i>Bismarck</i> switched focus to <i>Prince of Wales</i>, the two battleships exchanged salvos, dealing significant damage to each other. By the end of their bout, <i>Prince of Wales</i> managed to escape <i>Birmarck,</i> which had also taken hits to her upper deck and bulkhead, causing flooding to a generator room and a boiler room. Following the engagement, <i>Bismarck</i> and <i>Prinz Eugen</i> resumed their voyage to the North Atlantic. 
+</p>
+<p>
+  After determining that <i>Bismarck</i> was leaving broad streams of oil in her wake, <i>Prinz Eugen</i> was dispatched while any pursuers would follow <i>Bismarck's</i> trail as she made for Saint-Nazaire, France, for repairs. Meanwhile, British Prime Minister Winston Churchill ordered all ships in the area to pursue the <i>Kriegsmarine</i> ships. By late afternoon of the same day as the Battle of the Denmark Strait, six battleships and battlecruisers, two aircraft carriers, thirteen cruisers, and over twenty destroyers were in pursuit of <i>Bismarck,</i> and <i>Prince of Wales'</i> crew repaired her armaments enough to allow her to join the hunt. <i>Bismarck</i> was quickly found by British cruisers, but even with her damage, she was still able to reach speeds high enough that she would be able to reach France before British battleships prevented her from doing so. Knowing this, the British force launched planes from HMS <i>Victorious,</i> resulting in a torpedo striking <i>Bismarck's</i> belt and ultimately forcing her to slow down significantly. Following the bombing, <i>Bismarck</i> and <i>Prince of Wales</i> exchanged a few barrages, although neither of them had any success. <i>Bismarck</i> managed to escape to open waters, which caused the British fleet to slow their pursuit to avoid any potential <i class="qtip tip-top" data-tip="German submarine">U-boats</i>. On 26 May, <i>Bismarck's</i> immediate pursuers were forced to break off due to fuel problems, leaving only aircraft carrier <i>Ark Royal</i> and light cruiser <i>Sheffield</i> close enough to try to stop her.
+</p>
+
+<div class="bismarckDiv" style="text-align: center; width: 95%">
+	<img src="images/Bismarck3.jpg" id="bismarckImg3" alt="Bismarck about to allow Prinz Eugen to detach" width="40%" height="auto">
+	<p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>KMS Bismarck photographed shortly after the Battle of the Denmark Strait</i></p>
+  <p style="text-align: left; margin: 0 0 0 30%; font-size: .69vw"><i>Image taken from KMS Prinz Eugen, 24 May, 1941</i></p>
+</div>
+
+<div id="myModal3" class="modal">
+	<span class="close">&times;</span>
+	<img class="modal-content" id="img03" style="height: 95%; width: auto">
+	<div id="caption3"></div>
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById("myModal3");
+  
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var img = document.getElementById("bismarckImg3");
+  var modalImg = document.getElementById("img03");
+
+  img.onclick = function(){
+	modal.style.display = "block";
+	modalImg.src = this.src;
+	captionText.innerHTML = this.alt;
+  }
+  window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() { 
+	modal.style.display = "none";
+  }
+  </script>
+<h2>End of <i>Bismarck</i></h2>
+<p>
+  At about 9 at night on 26 May, a squadron of fifteen Fairey Swordfish torpedo bombers began to attack <i>Bismarck</i> while she was firing on <i>Sheffield,</i> forcing the light cruiser to retreat under a smokescreen. The bombing run scored multiple hits, causing minor flooding and jamming <i>Bismarck's</i> port rudder, forcing the battleship to turn to port in circles. Although fuel shortages had delayed the British fleet, the remaining cruisers and battleships available in the area began to close in on <i>Bismarck, </i>whose crew had lost its remaining hope. At daybreak on 27 May, HMS <i>King George V</i> led the final assault on <i>Bismarck.</i> Throughout the day, battleships, destroyers, and cruisers endlessly barraged the German giant. One salvo from the battleship HMS <i>Rodney</i> struck her <i class="qtip tip-top" data-tip="The part of a boat that projects above her main deck.">superstructure</i>, annihilating her bridge and effectively rendering her command crew nonexistent. Unable to effectively fight back, the decision was made by <i>Bismarck's</i> executive officer to scuttle her so that she would not be commandeered by the British navy. By late morning, <i>Bismarck</i> had been hit over 400 times, but still remained afloat until scuttling charges forced her underwater at about 10:40. The remaining crew - about 115 of about 2,200 - survived to be taken prisoner by the British force. 
+</p>
+<p>
+  On 8 June, 1989, the wreck of the KMS <i>Bismarck</i> was discovered by Robert Ballart, an oceanographer responsible for discovering the wreck of the RMS <i>Titanic.</i> She lies about 650 km west of Brest, France at the bottom of an extinct volcano, which she presumably slid down during her descent. The wreck shows that many of the hits scored on her dealt very little damage, some battleship shells even bouncing off, leaving nothing but dents on her hull. Since then, multiple subsequent expeditions have taken place, including another thorough survey in 2002 to film for a documentary, <i>Expedition: Bismarck,</i> directed by James Cameron. This survey revealed that the underside of <i>Bismarck's</i> armor deck was still intact and that all of the torpedo hits she endured were relatively ineffective in sinking the ship. Many experts debate over how long <i>Bismarck</i> could have remained afloat had her crew not scuttled her, with some believing that she could have persisted for close to a day.
+</p>
+<!-- Unnecessary? Too opinionated?
+<p>
+  The KMS <i>Bismarck</i> served as a beacon of morale for the <i>Kriegsmarine</i> and Nazi Germany as a whole, but despite her victory over the HMS <i>Hood,</i> she never got a taste of the success she was supposedly designed for. Perhaps if she had taken the role of a frontline combatant instead of a raider on supply lines, she could have served the role of the beacon that Germany envisioned her as. Perhaps an escort of only one heavy cruiser was not sufficient enough to protect the Allies' most desired naval target. Perhaps <i>Bismarck</i> was always merely a victim of propagandist overhype - after all, she was not the only dangerous dreadnought the War would see. And perhaps <i>Bismarck's</i> fate was the inevitable result of being a part of the War she found herself in, because despite her undeniable status as a marvel of engineering, power, and fortitude, numbers emerged victorious in a battle against her. Perhaps in a different reality, <i>Bismarck</i> might have found herself on the opposite side of the conflict, but in a truly ideal world, she never would have had to exist in the first place.
+</p>
+-->
+</body>
+</html>
